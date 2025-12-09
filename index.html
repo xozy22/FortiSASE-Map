@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html>
+<!--
+DISCLAIMER: This is not an official solution by Fortinet.
+This tool is provided as-is for your convenience. Use at your own risk.
+Created by Alexander Uhlmann
+-->
+<head>
+    <title>FortiSASE Map</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css">
+    <style>
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        #map {
+            height: 100%;
+        }
+
+        img.contacts {
+            max-height: 150px;
+            max-width: 150px;
+            height: auto;
+            width: auto;
+        }
+
+        img.customer {
+            filter: hue-rotate(120deg);
+        }
+
+        img.compute {
+            filter: hue-rotate(260deg);
+        }
+
+        img.edge {
+            filter: hue-rotate(0deg);
+        }
+
+        .marker-cluster-customer {
+            background-color: rgba(231, 89, 134, 0.4);
+        }
+
+        .marker-cluster-customer div {
+            background-color: rgba(231, 89, 134, 1.0);
+        }
+
+        .marker-cluster-compute {
+            background-color: rgba(43, 164, 69, 0.4);
+        }
+
+        .marker-cluster-compute div {
+            background-color: rgba(43, 164, 69, 1.0);
+        }
+
+        .marker-cluster-edge {
+            background-color: rgba(52, 137, 204, 0.4);
+        }
+
+        .marker-cluster-edge div {
+            background-color: rgba(52, 137, 204, 1.0);
+        }
+
+        .marker-cluster {
+            background-clip: padding-box;
+            border-radius: 20px;
+        }
+
+        .marker-cluster div {
+            width: 30px;
+            height: 30px;
+            margin-left: 5px;
+            margin-top: 5px;
+
+            text-align: center;
+            border-radius: 15px;
+            font: 16px "Helvetica Neue", Arial, Helvetica, sans-serif;
+        }
+
+        .marker-cluster span {
+            line-height: 30px;
+        }
+
+        .legend {
+            background: white;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            font-family: Arial, sans-serif;
+            font-size: 12px;
+            line-height: 1.4;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .legend h4 {
+            margin: 0 0 8px 0;
+            font-size: 14px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .legend-item {
+            margin-bottom: 4px;
+        }
+
+        .legend-label {
+            font-weight: bold;
+            color: #555;
+        }
+
+        .legend-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .legend-toggle {
+            background: #f0f0f0;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            padding: 2px 6px;
+            font-size: 10px;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .legend-toggle:hover {
+            background: #e0e0e0;
+        }
+
+        .legend-content {
+            transition: all 0.3s ease;
+        }
+
+        .legend-content.hidden {
+            display: none;
+        }
+
+        .controls-container {
+            background: white;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            font-family: Arial, sans-serif;
+            font-size: 12px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .controls-container button {
+            margin: 2px 0;
+            width: 100%;
+            padding: 5px;
+            cursor: pointer;
+        }
+
+        .controls-container form {
+            margin: 4px 0;
+            padding: 5px;
+            border-radius: 3px;
+        }
+
+        .control-item {
+            margin-bottom: 4px;
+        }
+
+        #checkboxShowCustomer:disabled {
+            cursor: not-allowed;
+        }
+
+        #checkboxShowCustomer:disabled+label {
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="map"></div>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <!-- Load markercluster plugin -->
+    <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+    <!-- Load polyline measure plugin: https://ppete2.github.io/Leaflet.PolylineMeasure/ -->
+    <link rel="stylesheet" href="https://ppete2.github.io/Leaflet.PolylineMeasure/Leaflet.PolylineMeasure.css" />
+    <script src="https://ppete2.github.io/Leaflet.PolylineMeasure/Leaflet.PolylineMeasure.js"></script>
+
+    <script>
+        var map = L.map('map', { closePopupOnClick: false }).setView([51.163375, 10.447683], 7);
+        
+        // Save map view state on move/zoom
+        map.on('moveend', function() {
+            var center = map.getCenter();
+            var zoom = map.getZoom();
+            sessionStorage.setItem('mapView', JSON.stringify({
+                lat: center.lat,
+                lng: center.lng,
+                zoom: zoom
+            }));
+        });
+        
+        // Add OpenStreetMap base layer
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
+            maxZoom: 18,
+        }).addTo(map);
+        // Additional TileLayers: https://leaflet-extras.github.io/leaflet-providers/preview/
+
+        var markersCustomer = L.markerClusterGroup({
+            iconCreateFunction: function (cluster) {
+                return new L.DivIcon({
+                    html: "<div><span>" + cluster.getChildCount() + "</span></div>",
+                    className: "marker-cluster marker-cluster-customer",
+                    iconSize: new L.Point(40, 40)
+                });
+            },
+        });
+        var markersCompute = L.markerClusterGroup({
+            iconCreateFunction: function (cluster) {
+                return new L.DivIcon({
+                    html: "<div><span>" + cluster.getChildCount() + "</span></div>",
+                    className: "marker-cluster marker-cluster-compute",
+                    iconSize: new L.Point(40, 40)
+                });
+            },
+        });
+        var markersEdge = L.markerClusterGroup({
+            iconCreateFunction: function (cluster) {
+                return new L.DivIcon({
+                    html: "<div><span>" + cluster.getChildCount() + "</span></div>",
+                    className: "marker-cluster marker-cluster-edge",
+                    iconSize: new L.Point(40, 40)
+                });
+            },
+        });
+
+        var locations = [];
+        var allLocationData = []; // Store all location data for filtering
+
+        // Random offset function to avoid overlapping markers
+        function storeOriginalData(data) {
+            data.forEach(pop => {
+                // Validate that location data exists and has valid coordinates
+                if (!pop.location ||
+                    typeof pop.location.lat === 'undefined' ||
+                    typeof pop.location.long === 'undefined') {
+                    console.warn(`Skipping ${pop.name || 'unnamed location'}: Missing location data`);
+                    return;
+                }
+
+                // Parse coordinates to ensure they are numbers
+                var lat = parseFloat(pop.location.lat);
+                var long = parseFloat(pop.location.long);
+
+                // Validate that coordinates are valid numbers
+                if (isNaN(lat) || isNaN(long)) {
+                    console.warn(`Skipping ${pop.name || 'unnamed location'}: Invalid coordinates (${pop.location.lat}, ${pop.location.long})`);
+                    return;
+                }
+
+                // Add random offset and update the pop object
+                pop.location.lat = (lat + Math.random() * 0.2 - 0.1).toFixed(3);
+                pop.location.long = (long + Math.random() * 0.2 - 0.1).toFixed(3);
+            });
+            allLocationData = data;
+        }
+
+        // Load location data from JSON file
+        var dataLoaded = false;
+        fetch('locations.json')
+            .then(response => response.json())
+            .then(data => {
+                storeOriginalData(data); // Store the original data
+                dataLoaded = true;
+                // Trigger the filter application if DOM is already loaded
+                if (document.readyState === 'complete') {
+                    applyInitialFilter();
+                }
+            });
+
+        // Override the polyline measure _updateTooltip function at prototype level
+        (function() {
+            var originalUpdateTooltip = L.Control.PolylineMeasure.prototype._updateTooltip;
+            
+            L.Control.PolylineMeasure.prototype._updateTooltip = function(currentTooltip, prevTooltip, total, difference, lastCircleCoords, mouseCoords) {
+                // Call the original function first
+                originalUpdateTooltip.call(this, currentTooltip, prevTooltip, total, difference, lastCircleCoords, mouseCoords);
+                
+                // Now add latency information
+                var km = total / 1000;
+                var latency = km * 0.0049 * 2; // Round-trip latency: 4.9 microseconds per km * 2
+                var latencyStr = latency.toFixed(2) + ' ms';
+
+                // Append latency to the tooltip
+                var tooltipContent = currentTooltip._icon.innerHTML;
+                if (!tooltipContent.includes('ms')) {
+                    tooltipContent += '<div style="font-weight: bold; font-size: 0.9em; margin-top: 2px;">+' + latencyStr + '</div>';
+                    currentTooltip._icon.innerHTML = tooltipContent;
+                }
+            };
+        })();
+
+        // Add polyline measure with custom formatting to show latency
+        var polylineMeasure = L.control.polylineMeasure({
+            unit: 'kilometres',
+            clearMeasurementsOnStop: true,
+            showBearings: false,
+            tooltipTextFinish: 'Click to <b>finish line</b><br>',
+            tooltipTextDelete: 'Press SHIFT-key and click to <b>delete point</b>',
+            tooltipTextMove: 'Click and drag to <b>move point</b><br>',
+            tooltipTextResume: '<br>Press CTRL-key and click to <b>resume line</b>',
+            tooltipTextAdd: 'Press CTRL-key and click to <b>add point</b>'
+        }).addTo(map);
+
+        // Add controls container to the top right corner
+        var controlsContainer = L.control({ position: 'topright' });
+        controlsContainer.onAdd = function (map) {
+            var div = L.DomUtil.create('div', 'controls-container');
+            div.innerHTML = `
+                <div class="legend-header">
+                    <h4 style="margin: 0;">Controls</h4>
+                    <span class="legend-toggle" onclick="toggleControls()" style="margin-left: 8px;">Hide</span>
+                </div>
+                <div class="legend-content" id="controls-content">
+                    <div class="control-item">
+                        <button onclick="recenterMap();">Center map</button>
+                    </div>
+                    <div class="control-item">
+                        <div style="display: flex; gap: 2px;">
+                            <button onclick="uploadCustomerFile();" style="flex: 1;">Upload Customer Data</button>
+                            <button onclick="window.open('customer-example.json', '_blank');" title="View sample customer data format" style="width: 30px;">i</button>
+                            <button onclick="clearCustomerData();" title="Clear" style="width: 30px;">X</button>
+                        </div>
+                    </div>
+                    <div class="control-item">
+                        <label for="availabilityFilter" style="display: block; margin-bottom: 2px;">Filter by Subscription:</label>
+                        <select id="availabilityFilter" onchange="filterMarkersByAvailability(this.value); sessionStorage.setItem('availabilityFilter', this.value);" style="width: 100%; padding: 5px;">
+                            <option value="comprehensive">Comprehensive</option>
+                            <option value="advanced" selected>Advanced</option>
+                            <option value="standard">Standard</option>
+                        </select>
+                    </div>
+                    <div class="control-item">
+                        <form id="customerLocationForm" style="background-color: rgba(231, 89, 134, 1.0);" title="No customer data present">
+                            <input id="checkboxShowCustomer" type="checkbox" onchange="toggleShowCustomer();"/>
+                            <label for="checkboxShowCustomer">Show Customer Locations</label>
+                        </form>
+                    </div>
+                    <div class="control-item">
+                        <form style="background-color: rgba(43, 164, 69, 1.0);">
+                            <input id="checkboxShowCompute" type="checkbox" onchange="toggleShowCompute();" checked/>
+                            <label for="checkboxShowCompute">Show Compute PoPs</label>
+                        </form>
+                    </div>
+                    <div class="control-item">
+                        <form style="background-color: rgba(52, 137, 204, 1.0);">
+                            <input id="checkboxShowEdge" type="checkbox" onchange="toggleShowEdge();" checked/>
+                            <label for="checkboxShowEdge">Show Edge PoPs</label>
+                        </form>
+                    </div>
+                </div>
+            `;
+            return div;
+        };
+        controlsContainer.addTo(map);
+
+        // Add legend to the lower left corner
+        var legend = L.control({ position: 'bottomleft' });
+        legend.onAdd = function (map) {
+            var div = L.DomUtil.create('div', 'legend');
+            div.innerHTML = `
+                <div class="legend-header">
+                    <h4 style="margin: 0;">Location Naming <a href="https://docs.fortinet.com/document/fortisase/latest/reference-guide/663044/global-data-centers" target="_blank" style="font-size: 10px; text-decoration: none;">&#9432;</a></h4>
+                    <span class="legend-toggle" onclick="toggleLegend()" style="margin-left: 8px;">Hide</span>
+                </div>
+                <div class="legend-content" id="legend-content">
+                    <div class="legend-item">
+                        <span class="legend-label">&lt;IATA-Code&gt;-&lt;Type&gt;</span>
+                    </div>
+                    <div class="legend-item">
+                        <strong>Fx:</strong> Fortinet Compute Node
+                    </div>
+                    <div class="legend-item">
+                        <strong>Gx:</strong> GCP Compute Node
+                    </div>
+                    <div class="legend-item">
+                        <strong>Ax:</strong> AWS Compute Node
+                    </div>
+                    <div class="legend-item">
+                        <strong>Ex:</strong> Edge Node
+                    </div>
+                </div>
+            `;
+            return div;
+        };
+        legend.addTo(map);
+
+        function addMarkers(data) {
+            // Track, what kind of markers were added
+            var markersAdded = { customer: false, compute: false, edge: false };
+            for (var i = 0; i < data.length; i++) {
+                var pop = data[i];
+
+                // Determine the marker type based on accessLocation, default to customer
+                var type = "customer";
+                if (pop.accessLocation) {
+                    type = pop.accessLocation.toLowerCase().includes('no') ? "compute" : "edge";
+                }
+
+                // Build popup content with all available information
+                var popupContent = `<div style="font-size: 16px; font-weight: bold; color: #2c3e50; margin-bottom: 8px; border-bottom: 2px solid #3498db; padding-bottom: 4px;">${pop.name}</div>`;
+
+                if (pop.cloud) {
+                    popupContent += `<b>Cloud:</b> ${pop.cloud}<br>`;
+                }
+
+                if (pop.analyticsAndEndpointManagement) {
+                    popupContent += `<b>Analytics & Endpoint Management:</b> ${pop.analyticsAndEndpointManagement}<br>`;
+                }
+
+                if (pop.endpointManagementLocation) {
+                    popupContent += `<b>Endpoint Management Location:</b> ${pop.endpointManagementLocation}<br>`;
+                }
+
+                if (pop.accessLocation) {
+                    popupContent += `<b>Access Location:</b> ${pop.accessLocation}<br>`;
+                }
+
+                if (pop.availability) {
+                    popupContent += `<b>Availability:</b> ${pop.availability}<br>`;
+                }
+
+                var marker = L.marker([pop.location.lat, pop.location.long])
+                    .bindPopup(popupContent/*, { closeOnClick: false, autoClose: false }*/)
+                    .on('add', (function (markerType) {
+                        return function () {
+                            this._icon.classList.add(markerType);
+                        };
+                    })(type));
+
+                // Store the availability data with the marker for filtering
+                marker.availability = pop.availability;
+                marker.popData = pop;
+
+                // If the pop has no accessLocation, add it to customer markers
+                if (type === 'customer') {
+                    markersCustomer.addLayer(marker);
+                    markersAdded.customer = true;
+                } else if (type === 'compute') {
+                    markersCompute.addLayer(marker);
+                    markersAdded.compute = true;
+                } else if (type === 'edge') {
+                    markersEdge.addLayer(marker);
+                    markersAdded.edge = true;
+                } else {
+                    console.warn(`Skipping ${pop.name || 'unnamed location'}: Unknown accessLocation value (${pop.accessLocation})`);
+                }
+            }
+
+            // Clear and add marker clusters to the map, only if markers were added
+            if (markersAdded.customer) {
+                //markersCustomer.clearLayers();
+                map.removeLayer(markersCustomer);
+                map.addLayer(markersCustomer);
+            }
+            if (markersAdded.compute) {
+                //markersCompute.clearLayers();
+                map.removeLayer(markersCompute);
+                map.addLayer(markersCompute);
+            }
+            if (markersAdded.edge) {
+                //markersEdge.clearLayers();
+                map.removeLayer(markersEdge);
+                map.addLayer(markersEdge);
+            }
+            //toggleShowCustomer(); // Do not show customer by default
+            //recenterMap();
+            //markers.refreshClusters();
+        }
+
+        function updateCustomerLocationTooltip() {
+            var storedCustomerData = sessionStorage.getItem('customerLocations');
+            var form = document.getElementById('customerLocationForm');
+
+            if (storedCustomerData) {
+                try {
+                    var customerData = JSON.parse(storedCustomerData);
+                    if (Array.isArray(customerData)) {
+                        form.title = `${customerData.length} customer location${customerData.length !== 1 ? 's' : ''} loaded`;
+                    } else {
+                        form.title = 'No customer data present';
+                    }
+                } catch (error) {
+                    form.title = 'No customer data present';
+                }
+            } else {
+                form.title = 'No customer data present';
+            }
+        }
+
+        function uploadCustomerFile() {
+            var input = document.createElement('input');
+            input.type = 'file';
+            input.accept = '.json';
+            input.onchange = function (event) {
+                var file = event.target.files[0];
+                if (file) {
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        try {
+                            var customerData = JSON.parse(e.target.result);
+
+                            // Add new customer data
+                            addMarkers(customerData);
+
+                            // Enable and check the customer checkbox
+                            var checkbox = document.getElementById('checkboxShowCustomer');
+                            checkbox.disabled = false;
+                            checkbox.checked = true;
+
+                            // Store in sessionStorage for this browser session
+                            sessionStorage.setItem('customerLocations', JSON.stringify(customerData));
+
+                            // Update tooltip
+                            updateCustomerLocationTooltip();
+
+                            console.log(`Loaded ${customerData.length} customer locations from file`);
+                        } catch (error) {
+                            alert('Error parsing JSON file: ' + error.message);
+                        }
+                    };
+                    reader.readAsText(file);
+                }
+            };
+            input.click();
+        }
+
+        function clearCustomerData() {
+            // Clear customer markers from map
+            markersCustomer.clearLayers();
+            map.removeLayer(markersCustomer);
+
+            // Uncheck and disable the customer checkbox
+            var checkbox = document.getElementById('checkboxShowCustomer');
+            checkbox.checked = false;
+            checkbox.disabled = true;
+
+            // Remove from sessionStorage
+            sessionStorage.removeItem('customerLocations');
+
+            // Update tooltip
+            updateCustomerLocationTooltip();
+        }
+
+        function applyInitialFilter() {
+            // Restore availability filter
+            var availabilityFilter = document.getElementById('availabilityFilter');
+            var savedFilter = sessionStorage.getItem('availabilityFilter');
+            if (savedFilter) {
+                availabilityFilter.value = savedFilter;
+            }
+            filterMarkersByAvailability(availabilityFilter.value);
+
+            // Restore checkbox states
+            var savedShowCompute = sessionStorage.getItem('showCompute');
+            var savedShowEdge = sessionStorage.getItem('showEdge');
+            
+            var checkboxCompute = document.getElementById('checkboxShowCompute');
+            var checkboxEdge = document.getElementById('checkboxShowEdge');
+            
+            if (savedShowCompute !== null) {
+                checkboxCompute.checked = savedShowCompute === 'true';
+            }
+            if (savedShowEdge !== null) {
+                checkboxEdge.checked = savedShowEdge === 'true';
+            }
+            
+            // Apply visibility based on restored checkbox states AND whether markers exist
+            if (!checkboxCompute.checked || markersCompute.getLayers().length === 0) {
+                map.removeLayer(markersCompute);
+            }
+            if (!checkboxEdge.checked || markersEdge.getLayers().length === 0) {
+                map.removeLayer(markersEdge);
+            }
+
+            // Restore map view or recenter if no saved view
+            var savedMapView = sessionStorage.getItem('mapView');
+            if (savedMapView) {
+                try {
+                    var mapView = JSON.parse(savedMapView);
+                    map.setView([mapView.lat, mapView.lng], mapView.zoom);
+                } catch (error) {
+                    console.error('Error restoring map view:', error);
+                    recenterMap();
+                }
+            } else {
+                recenterMap();
+            }
+        }
+
+        // Load customer data from sessionStorage on page load if available
+        window.addEventListener('load', function () {
+            var checkbox = document.getElementById('checkboxShowCustomer');
+            var storedCustomerData = sessionStorage.getItem('customerLocations');
+
+            if (storedCustomerData) {
+                try {
+                    var customerData = JSON.parse(storedCustomerData);
+
+                    // Validate that customerData is an array
+                    if (!Array.isArray(customerData)) {
+                        throw new Error('Customer data must be an array');
+                    }
+
+                    addMarkers(customerData, 'customer');
+                    checkbox.disabled = false;
+                    checkbox.checked = true;
+                    console.log(`Loaded ${customerData.length} customer locations from session storage`);
+                } catch (error) {
+                    console.error('Error loading stored customer data:', error);
+                    // Clear corrupted data from sessionStorage
+                    sessionStorage.removeItem('customerLocations');
+                    checkbox.disabled = true;
+                    alert('Error loading stored customer data. Please upload your customer file again.');
+                }
+            } else {
+                // No customer data in sessionStorage, disable the checkbox
+                checkbox.disabled = true;
+            }
+
+            // Update tooltip
+            updateCustomerLocationTooltip();
+
+            // Apply filter if data is loaded, otherwise it will be applied when data loads
+            if (dataLoaded) {
+                applyInitialFilter();
+            }
+        });
+
+        function recenterMap() {
+            var visibleGroups = [];
+            if (markersCompute.getLayers().length > 0) visibleGroups.push(markersCompute);
+            if (markersEdge.getLayers().length > 0) visibleGroups.push(markersEdge);
+            if (markersCustomer.getLayers().length > 0) visibleGroups.push(markersCustomer);
+            
+            if (visibleGroups.length > 0) {
+                var allMarkers = L.featureGroup(visibleGroups);
+                var bounds = allMarkers.getBounds();
+                if (bounds.isValid()) {
+                    var center = bounds.getCenter();
+                    map.flyTo(center, map.getBoundsZoom(bounds));
+                }
+            }
+        }
+
+        function toggleShowCustomer() {
+            if (document.getElementById('checkboxShowCustomer').checked) {
+                map.addLayer(markersCustomer);
+            } else {
+                map.removeLayer(markersCustomer);
+            }
+        }
+
+        function toggleShowCompute() {
+            var checked = document.getElementById('checkboxShowCompute').checked;
+            if (checked) {
+                map.addLayer(markersCompute);
+            } else {
+                map.removeLayer(markersCompute);
+            }
+            sessionStorage.setItem('showCompute', checked);
+        }
+
+        function toggleShowEdge() {
+            var checked = document.getElementById('checkboxShowEdge').checked;
+            if (checked) {
+                map.addLayer(markersEdge);
+            } else {
+                map.removeLayer(markersEdge);
+            }
+            sessionStorage.setItem('showEdge', checked);
+        }
+
+        function filterMarkersByAvailability(availabilityFilter) {
+            // availabilityFilter can be:
+            // - "standard": Show only markers with availability "Any"
+            // - "advanced": Show only markers with availability "Any or Advanced"
+            // - "comprehensive": Show all that include "Any, Advanced or Comprehensive"
+
+            console.log(`Filter requested: ${availabilityFilter}`);
+
+            // 2. Show/hide based on the availability field matching the filter
+            function shouldShowLocation(pop) {
+                if (!pop.availability) return false; // Hide if no availability data
+
+                var availability = pop.availability.toLowerCase();
+
+                switch (availabilityFilter) {
+                    case 'standard':
+                        // Show only markers with availability "Any"
+                        return availability.includes('any subscription');
+
+                    case 'advanced':
+                        // Show only markers with availability "Any or Advanced"
+                        return availability.includes('any subscription') ||
+                            availability.includes('advanced');
+
+                    case 'comprehensive':
+                        // Show all that include "Any, Advanced or Comprehensive"
+                        return availability.includes('any subscription') ||
+                            availability.includes('advanced') ||
+                            availability.includes('comprehensive');
+
+                    default:
+                        return true;
+                }
+            }
+
+            // 1. Iterate through all markers from the original JSON data and filter
+            var filteredData = allLocationData.filter(function (pop) {
+                return shouldShowLocation(pop);
+            });
+
+            // Store checkbox states before clearing
+            var showCompute = document.getElementById('checkboxShowCompute').checked;
+            var showEdge = document.getElementById('checkboxShowEdge').checked;
+
+            // Clear existing compute and edge markers from map
+            map.removeLayer(markersCompute);
+            map.removeLayer(markersEdge);
+
+            // Clear existing compute and edge marker layers
+            markersCompute.clearLayers();
+            markersEdge.clearLayers();
+
+            // Reuse addMarkers function with filtered data
+            addMarkers(filteredData);
+
+            // Restore visibility based on checkbox states AND whether markers exist
+            if (showCompute && markersCompute.getLayers().length > 0) {
+                map.addLayer(markersCompute);
+            } else {
+                map.removeLayer(markersCompute);
+            }
+
+            if (showEdge && markersEdge.getLayers().length > 0) {
+                map.addLayer(markersEdge);
+            } else {
+                map.removeLayer(markersEdge);
+            }
+        }
+
+        function toggleLegend() {
+            var content = document.getElementById('legend-content');
+            var container = content.parentElement;
+            var toggle = container.querySelector('.legend-toggle');
+
+            if (content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+                toggle.textContent = 'Hide';
+            } else {
+                content.classList.add('hidden');
+                toggle.textContent = 'Show';
+            }
+        }
+
+        function toggleControls() {
+            var content = document.getElementById('controls-content');
+            var container = content.parentElement;
+            var toggle = container.querySelector('.legend-toggle');
+
+            if (content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+                toggle.textContent = 'Hide';
+            } else {
+                content.classList.add('hidden');
+                toggle.textContent = 'Show';
+            }
+        }
+    </script>
+</body>
+
+</html>

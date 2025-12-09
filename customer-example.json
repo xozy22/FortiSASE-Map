@@ -1,0 +1,135 @@
+[
+    {
+        "name": "Sunnyvale (HQ), USA",
+        "location": {
+            "lat": 37.368832,
+            "long": -122.036346
+        }
+    },
+    {
+        "name": "New York, USA",
+        "location": {
+            "lat": 40.712776,
+            "long": -74.005974
+        }
+    },
+    {
+        "name": "Plano, USA",
+        "location": {
+            "lat": 33.019844,
+            "long": -96.698883
+        }
+    },
+    {
+        "name": "Reston, USA",
+        "location": {
+            "lat": 38.968636,
+            "long": -77.341103
+        }
+    },
+    {
+        "name": "Union City, USA",
+        "location": {
+            "lat": 37.593356,
+            "long": -122.043861
+        }
+    },
+    {
+        "name": "Burnaby, Canada",
+        "location": {
+            "lat": 49.248806,
+            "long": -122.980515
+        }
+    },
+    {
+        "name": "Mexico City, Mexico",
+        "location": {
+            "lat": 19.432608,
+            "long": -99.133209
+        }
+    },
+    {
+        "name": "Buenos Aires, Argentina",
+        "location": {
+            "lat": -34.603683,
+            "long": -58.381557
+        }
+    },
+    {
+        "name": "Valbonne, France",
+        "location": {
+            "lat": 43.641544,
+            "long": 7.009225
+        }
+    },
+    {
+        "name": "Paris, France",
+        "location": {
+            "lat": 48.856613,
+            "long": 2.352222
+        }
+    },
+    {
+        "name": "London, UK",
+        "location": {
+            "lat": 51.507351,
+            "long": -0.127758
+        }
+    },
+    {
+        "name": "Frankfurt, Germany",
+        "location": {
+            "lat": 50.110924,
+            "long": 8.682127
+        }
+    },
+    {
+        "name": "Vienna, Austria",
+        "location": {
+            "lat": 48.208176,
+            "long": 16.373819
+        }
+    },
+    {
+        "name": "Diegem, Belgium",
+        "location": {
+            "lat": 50.892368,
+            "long": 4.444265
+        }
+    },
+    {
+        "name": "Prague, Czech Republic",
+        "location": {
+            "lat": 50.075539,
+            "long": 14.437800
+        }
+    },
+    {
+        "name": "Copenhagen, Denmark",
+        "location": {
+            "lat": 55.676098,
+            "long": 12.568337
+        }
+    },
+    {
+        "name": "Almaty, Kazakhstan",
+        "location": {
+            "lat": 43.222015,
+            "long": 76.851248
+        }
+    },
+    {
+        "name": "Valbonne (EMEA Logistics), France",
+        "location": {
+            "lat": 43.641544,
+            "long": 7.009225
+        }
+    },
+    {
+        "name": "Sydney, Australia",
+        "location": {
+            "lat": -33.868820,
+            "long": 151.209290
+        }
+    }
+]

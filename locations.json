@@ -1,0 +1,1718 @@
+[
+    {
+        "name": "Ashburn - Virginia - USA (IAD-F4)",
+        "location": {
+            "lat": 39.043757,
+            "long": -77.487442
+        },
+        "cloud": "Fortinet",
+        "analyticsAndEndpointManagement": "Yes",
+        "endpointManagementLocation": "Yes",
+        "accessLocation": "No",
+        "availability": "Any subscription"
+    },
+    {
+        "name": "Bangalore - India (BLR-F1)",
+        "location": {
+            "lat": 12.971599,
+            "long": 77.594566
+        },
+        "cloud": "Fortinet",
+        "analyticsAndEndpointManagement": "Yes",
+        "endpointManagementLocation": "Yes",
+        "accessLocation": "No",
+        "availability": "Any subscription"
+    },
+    {
+        "name": "Dallas - Texas - USA (DFW-F1)",
+        "location": {
+            "lat": 32.776664,
+            "long": -96.796988
+        },
+        "cloud": "Fortinet",
+        "analyticsAndEndpointManagement": "Yes",
+        "endpointManagementLocation": "No",
+        "accessLocation": "No",
+        "availability": "Any subscription"
+    },
+    {
+        "name": "Dubai - United Arab Emirates (DXB-F1)",
+        "location": {
+            "lat": 25.276987,
+            "long": 55.296249
+        },
+        "cloud": "Fortinet",
+        "analyticsAndEndpointManagement": "Yes",
+        "endpointManagementLocation": "Yes",
+        "accessLocation": "No",
+        "availability": "Any subscription"
+    },
+    {
+        "name": "Dubai - United Arab Emirates (DXB-F2) To comply with UAE regulations and to avoid latency issues, on-shore (domestic) customers must use this location.",
+        "location": {
+            "lat": 25.276987,
+            "long": 55.296249
+        },
+        "cloud": "Fortinet",
+        "analyticsAndEndpointManagement": "Yes",
+        "endpointManagementLocation": "Yes",
+        "accessLocation": "No",
+        "availability": "Any subscription"
+    },
+    {
+        "name": "Frankfurt - Germany (FRA-F1)",
+        "location": {
+            "lat": 50.110924,
+            "long": 8.682127
+        },
+        "cloud": "Fortinet",
+        "analyticsAndEndpointManagement": "Yes",
+        "endpointManagementLocation": "Yes",
+        "accessLocation": "No",
+        "availability": "Any subscription"
+    },
+    {
+        "name": "Hong Kong (HKG-F1)",
+        "location": {
+            "lat": 22.319303,
+            "long": 114.169361
+        },
+        "cloud": "Fortinet",
+        "analyticsAndEndpointManagement": "Yes",
+        "endpointManagementLocation": "No",
+        "accessLocation": "No",
+        "availability": "Any subscription"
+    },
+    {
+        "name": "Istanbul - Turkey (IST-F1)",
+        "location": {
+            "lat": 41.008238,
+            "long": 28.978359
+        },
+        "cloud": "Fortinet",
+        "analyticsAndEndpointManagement": "Yes",
+        "endpointManagementLocation": "No",
+        "accessLocation": "No",
+        "availability": "Advanced or Comprehensive subscription"
+    },
+    {
+        "name": "Johannesburg - South Africa (JNB-F1)",
+        "location": {
+            "lat": -26.204103,
+            "long": 28.047305
+        },
+        "cloud": "Fortinet",
+        "analyticsAndEndpointManagement": "Yes",
+        "endpointManagementLocation": "No",
+        "accessLocation": "No",
+        "availability": "Any subscription"
+    },
+    {
+        "name": "Komagome - Japan (TYO-F1)",
+        "location": {
+            "lat": 35.733333,
+            "long": 139.733333
+        },
+        "cloud": "Fortinet",
+        "analyticsAndEndpointManagement": "No",
+        "endpointManagementLocation": "No",
+        "accessLocation": "No",
+        "availability": "Any subscription"
+    },
+    {
+        "name": "London - United Kingdom (LON-F1)",
+        "location": {
+            "lat": 51.507351,
+            "long": -0.127758
+        },
+        "cloud": "Fortinet",
+        "analyticsAndEndpointManagement": "Yes",
+        "endpointManagementLocation": "Yes",
+        "accessLocation": "No",
+        "availability": "Any subscription"
+    },
+    {
+        "name": "Madrid - Spain (MAD-F1)",
+        "location": {
+            "lat": 40.4168,
+            "long": -3.7038
+        },
+        "cloud": "Fortinet",
+        "analyticsAndEndpointManagement": "Yes",
+        "endpointManagementLocation": "Yes",
+        "accessLocation": "No",
+        "availability": "Any subscription"
+    },
+    {
+        "name": "Miami - Florida - USA (MIA-F1)",
+        "location": {
+            "lat": 25.761680,
+            "long": -80.191790
+        },
+        "cloud": "Fortinet",
+        "analyticsAndEndpointManagement": "Yes",
+        "endpointManagementLocation": "No",
+        "accessLocation": "No",
+        "availability": "Any subscription"
+    },
+    {
+        "name": "Ottawa - Canada (YOW-F1)",
+        "location": {
+            "lat": 45.421530,
+            "long": -75.697193
+        },
+        "cloud": "Fortinet",
+        "analyticsAndEndpointManagement": "No",
+        "endpointManagementLocation": "No",
+        "accessLocation": "No",
+        "availability": "Any subscription"
+    },
+    {
+        "name": "Paris - France (PAR-F1)",
+        "location": {
+            "lat": 48.856613,
+            "long": 2.352222
+        },
+        "cloud": "Fortinet",
+        "analyticsAndEndpointManagement": "Yes",
+        "endpointManagementLocation": "No",
+        "accessLocation": "No",
+        "availability": "Any subscription"
+    },
+    {
+        "name": "Plano - Texas - USA (DFW-F3)",
+        "location": {
+            "lat": 33.0198,
+            "long": -96.6989
+        },
+        "cloud": "Fortinet",
+        "analyticsAndEndpointManagement": "Yes",
+        "endpointManagementLocation": "Yes",
+        "accessLocation": "No",
+        "availability": "Any subscription"
+    },
+    {
+        "name": "Pune - India (PNQ-F1)",
+        "location": {
+            "lat": 18.520430,
+            "long": 73.856743
+        },
+        "cloud": "Fortinet",
+        "analyticsAndEndpointManagement": "Yes",
+        "endpointManagementLocation": "Yes",
+        "accessLocation": "No",
+        "availability": "Any subscription"
+    },
+    {
+        "name": "San Jose - California - USA (SJC-F4)",
+        "location": {
+            "lat": 37.338208,
+            "long": -121.886329
+        },
+        "cloud": "Fortinet",
+        "analyticsAndEndpointManagement": "Yes",
+        "endpointManagementLocation": "Yes",
+        "accessLocation": "No",
+        "availability": "Any subscription"
+    },
+    {
+        "name": "Sao Paulo - Brazil (GRU-F1)",
+        "location": {
+            "lat": -23.5505,
+            "long": -46.6333
+        },
+        "cloud": "Fortinet",
+        "analyticsAndEndpointManagement": "Yes",
+        "endpointManagementLocation": "No",
+        "accessLocation": "No",
+        "availability": "Any subscription"
+    },
+    {
+        "name": "Singapore - Republic of Singapore (SIN-F1)",
+        "location": {
+            "lat": 1.352083,
+            "long": 103.819836
+        },
+        "cloud": "Fortinet",
+        "analyticsAndEndpointManagement": "Yes",
+        "endpointManagementLocation": "No",
+        "accessLocation": "No",
+        "availability": "Any subscription"
+    },
+    {
+        "name": "Sydney - Australia (SYD-F1)",
+        "location": {
+            "lat": -33.868820,
+            "long": 151.209296
+        },
+        "cloud": "Fortinet",
+        "analyticsAndEndpointManagement": "Yes",
+        "endpointManagementLocation": "Yes",
+        "accessLocation": "No",
+        "availability": "Any subscription"
+    },
+    {
+        "name": "Tokyo - Japan (TYO-F2)",
+        "location": {
+            "lat": 35.689487,
+            "long": 139.691711
+        },
+        "cloud": "Fortinet",
+        "analyticsAndEndpointManagement": "No",
+        "endpointManagementLocation": "Yes",
+        "accessLocation": "No",
+        "availability": "Any subscription"
+    },
+    {
+        "name": "Toronto - Canada (YTO-F1)",
+        "location": {
+            "lat": 43.651070,
+            "long": -79.347015
+        },
+        "cloud": "Fortinet",
+        "analyticsAndEndpointManagement": "Yes",
+        "endpointManagementLocation": "No",
+        "accessLocation": "No",
+        "availability": "Any subscription"
+    },
+    {
+        "name": "Valbonne - France (NCE-F1)",
+        "location": {
+            "lat": 43.641900,
+            "long": 7.003500
+        },
+        "cloud": "Fortinet",
+        "analyticsAndEndpointManagement": "Yes",
+        "endpointManagementLocation": "No",
+        "accessLocation": "No",
+        "availability": "Any subscription. Not available for new provisioning"
+    },
+    {
+        "name": "Vancouver - Canada (YVR-F2)",
+        "location": {
+            "lat": 49.282729,
+            "long": -123.120738
+        },
+        "cloud": "Fortinet",
+        "analyticsAndEndpointManagement": "Yes",
+        "endpointManagementLocation": "No",
+        "accessLocation": "No",
+        "availability": "Any subscription"
+    },
+    {
+        "name": "Amsterdam - Netherlands (AMS-G2)",
+        "location": {
+            "lat": 52.3676,
+            "long": 4.9041
+        },
+        "cloud": "Public",
+        "analyticsAndEndpointManagement": "Yes",
+        "endpointManagementLocation": "No",
+        "accessLocation": "No",
+        "availability": "Advanced or Comprehensive Subscription"
+    },
+    {
+        "name": "Ashburn - Virginia - USA (IAD-G2)",
+        "location": {
+            "lat": 39.0438,
+            "long": -77.4874
+        },
+        "cloud": "Public",
+        "analyticsAndEndpointManagement": "Yes",
+        "endpointManagementLocation": "No",
+        "accessLocation": "No",
+        "availability": "Advanced or Comprehensive Subscription"
+    },
+    {
+        "name": "Auckland - New Zealand (AKL-A1)",
+        "location": {
+            "lat": -36.8485,
+            "long": 174.7633
+        },
+        "cloud": "Public",
+        "analyticsAndEndpointManagement": "Yes",
+        "endpointManagementLocation": "No",
+        "accessLocation": "No",
+        "availability": "Advanced or Comprehensive Subscription"
+    },
+    {
+        "name": "Buenos Aires - Argentina (BUE-A1)",
+        "location": {
+            "lat": -34.6037,
+            "long": -58.3816
+        },
+        "cloud": "Public",
+        "analyticsAndEndpointManagement": "Yes",
+        "endpointManagementLocation": "No",
+        "accessLocation": "No",
+        "availability": "Advanced or Comprehensive Subscription"
+    },
+    {
+        "name": "Chicago - Illinois - USA (ORD-A1)",
+        "location": {
+            "lat": 41.8781,
+            "long": -87.6298
+        },
+        "cloud": "Public",
+        "analyticsAndEndpointManagement": "Yes",
+        "endpointManagementLocation": "No",
+        "accessLocation": "No",
+        "availability": "Advanced or Comprehensive Subscription"
+    },
+    {
+        "name": "Dallas - Texas - USA (DFW-G2)",
+        "location": {
+            "lat": 32.7767,
+            "long": -96.7970
+        },
+        "cloud": "Public",
+        "analyticsAndEndpointManagement": "Yes",
+        "endpointManagementLocation": "No",
+        "accessLocation": "No",
+        "availability": "Advanced or Comprehensive Subscription"
+    },
+    {
+        "name": "Dammam - Saudi Arabia (DMM-G2)",
+        "location": {
+            "lat": 26.4207,
+            "long": 50.0888
+        },
+        "cloud": "Public",
+        "analyticsAndEndpointManagement": "Yes",
+        "endpointManagementLocation": "No",
+        "accessLocation": "No",
+        "availability": "Advanced or Comprehensive Subscription"
+    },
+    {
+        "name": "Delhi - India (DEL-G2)",
+        "location": {
+            "lat": 28.7041,
+            "long": 77.1025
+        },
+        "cloud": "Public",
+        "analyticsAndEndpointManagement": "Yes",
+        "endpointManagementLocation": "No",
+        "accessLocation": "No",
+        "availability": "Advanced or Comprehensive Subscription"
+    },
+    {
+        "name": "Doha - Qatar (DOH-G2)",
+        "location": {
+            "lat": 25.276987,
+            "long": 51.520008
+        },
+        "cloud": "Public",
+        "analyticsAndEndpointManagement": "Yes",
+        "endpointManagementLocation": "No",
+        "accessLocation": "No",
+        "availability": "Advanced or Comprehensive Subscription"
+    },
+    {
+        "name": "Dublin - Ireland (DUB-A2)",
+        "location": {
+            "lat": 53.3498,
+            "long": -6.2603
+        },
+        "cloud": "Public",
+        "analyticsAndEndpointManagement": "Yes",
+        "endpointManagementLocation": "No",
+        "accessLocation": "No",
+        "availability": "Advanced or Comprehensive Subscription"
+    },
+    {
+        "name": "Hamina - Finland (HEL-G2)",
+        "location": {
+            "lat": 60.5693,
+            "long": 27.1979
+        },
+        "cloud": "Public",
+        "analyticsAndEndpointManagement": "Yes",
+        "endpointManagementLocation": "No",
+        "accessLocation": "No",
+        "availability": "Advanced or Comprehensive Subscription"
+    },
+    {
+        "name": "Hong Kong - China (HKG-G2)",
+        "location": {
+            "lat": 22.3193,
+            "long": 114.1694
+        },
+        "cloud": "Public",
+        "analyticsAndEndpointManagement": "Yes",
+        "endpointManagementLocation": "No",
+        "accessLocation": "No",
+        "availability": "Advanced or Comprehensive Subscription"
+    },
+    {
+        "name": "Jakarta - Indonesia (JKT-G2)",
+        "location": {
+            "lat": -6.2088,
+            "long": 106.8456
+        },
+        "cloud": "Public",
+        "analyticsAndEndpointManagement": "Yes",
+        "endpointManagementLocation": "No",
+        "accessLocation": "No",
+        "availability": "Advanced or Comprehensive Subscription"
+    },
+    {
+        "name": "Johannesburg - South Africa (JNB-G2)",
+        "location": {
+            "lat": -26.2041,
+            "long": 28.0473
+        },
+        "cloud": "Public",
+        "analyticsAndEndpointManagement": "Yes",
+        "endpointManagementLocation": "No",
+        "accessLocation": "No",
+        "availability": "Advanced or Comprehensive Subscription"
+    },
+    {
+        "name": "Las Vegas - Nevada - USA (LAS-G2)",
+        "location": {
+            "lat": 36.1699,
+            "long": -115.1398
+        },
+        "cloud": "Public",
+        "analyticsAndEndpointManagement": "Yes",
+        "endpointManagementLocation": "No",
+        "accessLocation": "No",
+        "availability": "Advanced or Comprehensive Subscription"
+    },
+    {
+        "name": "Lima - Peru (LIM-A1)",
+        "location": {
+            "lat": -12.0464,
+            "long": -77.0428
+        },
+        "cloud": "Public",
+        "analyticsAndEndpointManagement": "Yes",
+        "endpointManagementLocation": "No",
+        "accessLocation": "No",
+        "availability": "Advanced or Comprehensive Subscription"
+    },
+    {
+        "name": "London - UK (LON-G2)",
+        "location": {
+            "lat": 51.5074,
+            "long": -0.1278
+        },
+        "cloud": "Public",
+        "analyticsAndEndpointManagement": "Yes",
+        "endpointManagementLocation": "No",
+        "accessLocation": "No",
+        "availability": "Advanced or Comprehensive Subscription"
+    },
+    {
+        "name": "Madrid - Spain (MAD-G2)",
+        "location": {
+            "lat": 40.4168,
+            "long": -3.7038
+        },
+        "cloud": "Public",
+        "analyticsAndEndpointManagement": "Yes",
+        "endpointManagementLocation": "No",
+        "accessLocation": "No",
+        "availability": "Advanced or Comprehensive Subscription"
+    },
+    {
+        "name": "Melbourne - Australia (MEL-G2)",
+        "location": {
+            "lat": -37.8136,
+            "long": 144.9631
+        },
+        "cloud": "Public",
+        "analyticsAndEndpointManagement": "Yes",
+        "endpointManagementLocation": "No",
+        "accessLocation": "No",
+        "availability": "Advanced or Comprehensive Subscription"
+    },
+    {
+        "name": "Miami - US (MIA-A1)",
+        "location": {
+            "lat": 25.7617,
+            "long": -80.1918
+        },
+        "cloud": "Public",
+        "analyticsAndEndpointManagement": "Yes",
+        "endpointManagementLocation": "No",
+        "accessLocation": "No",
+        "availability": "Advanced or Comprehensive Subscription"
+    },
+    {
+        "name": "Milan - Italy (MIL-G2)",
+        "location": {
+            "lat": 45.4642,
+            "long": 9.1900
+        },
+        "cloud": "Public",
+        "analyticsAndEndpointManagement": "Yes",
+        "endpointManagementLocation": "No",
+        "accessLocation": "No",
+        "availability": "Advanced or Comprehensive Subscription"
+    },
+    {
+        "name": "Manila - Philippines (MNL-A1)",
+        "location": {
+            "lat": 14.5995,
+            "long": 120.9842
+        },
+        "cloud": "Public",
+        "analyticsAndEndpointManagement": "Yes",
+        "endpointManagementLocation": "No",
+        "accessLocation": "No",
+        "availability": "Advanced or Comprehensive Subscription"
+    },
+    {
+        "name": "Mumbai - India (BOM-G2)",
+        "location": {
+            "lat": 19.0760,
+            "long": 72.8777
+        },
+        "cloud": "Public",
+        "analyticsAndEndpointManagement": "Yes",
+        "endpointManagementLocation": "No",
+        "accessLocation": "No",
+        "availability": "Advanced or Comprehensive Subscription"
+    },
+    {
+        "name": "Osaka - Japan (OSA-G2)",
+        "location": {
+            "lat": 34.6937,
+            "long": 135.5023
+        },
+        "cloud": "Public",
+        "analyticsAndEndpointManagement": "Yes",
+        "endpointManagementLocation": "No",
+        "accessLocation": "No",
+        "availability": "Advanced or Comprehensive Subscription"
+    },
+    {
+        "name": "Paris - France (PAR-G2)",
+        "location": {
+            "lat": 48.8566,
+            "long": 2.3522
+        },
+        "cloud": "Public",
+        "analyticsAndEndpointManagement": "Yes",
+        "endpointManagementLocation": "No",
+        "accessLocation": "No",
+        "availability": "Advanced or Comprehensive Subscription"
+    },
+    {
+        "name": "Perth - Australia (PER-A1)",
+        "location": {
+            "lat": -31.950527,
+            "long": 115.860457
+        },
+        "cloud": "Public",
+        "analyticsAndEndpointManagement": "Yes",
+        "endpointManagementLocation": "No",
+        "accessLocation": "No",
+        "availability": "Advanced or Comprehensive Subscription"
+    },
+    {
+        "name": "Portland - Oregon - USA (PDX-G2)",
+        "location": {
+            "lat": 45.5051,
+            "long": -122.6750
+        },
+        "cloud": "Public",
+        "analyticsAndEndpointManagement": "Yes",
+        "endpointManagementLocation": "Yes",
+        "accessLocation": "No",
+        "availability": "Advanced or Comprehensive Subscription"
+    },
+    {
+        "name": "Santiago - Chile (SCL-G2)",
+        "location": {
+            "lat": -33.4489,
+            "long": -70.6693
+        },
+        "cloud": "Public",
+        "analyticsAndEndpointManagement": "Yes",
+        "endpointManagementLocation": "No",
+        "accessLocation": "No",
+        "availability": "Advanced or Comprehensive Subscription"
+    },
+    {
+        "name": "São Paulo - Brazil (SAO-G2)",
+        "location": {
+            "lat": -23.5505,
+            "long": -46.6333
+        },
+        "cloud": "Public",
+        "analyticsAndEndpointManagement": "Yes",
+        "endpointManagementLocation": "No",
+        "accessLocation": "No",
+        "availability": "Advanced or Comprehensive Subscription"
+    },
+    {
+        "name": "Seoul - South Korea (SEL-G2)",
+        "location": {
+            "lat": 37.5665,
+            "long": 126.9780
+        },
+        "cloud": "Public",
+        "analyticsAndEndpointManagement": "Yes",
+        "endpointManagementLocation": "No",
+        "accessLocation": "No",
+        "availability": "Advanced or Comprehensive Subscription"
+    },
+    {
+        "name": "St. Ghislain, Belgium (BRU-G2)",
+        "location": {
+            "lat": 50.4714,
+            "long": 3.8218
+        },
+        "cloud": "Public",
+        "analyticsAndEndpointManagement": "Yes",
+        "endpointManagementLocation": "No",
+        "accessLocation": "No",
+        "availability": "Advanced or Comprehensive Subscription"
+    },
+    {
+        "name": "Sydney - Australia (SYD-G2)",
+        "location": {
+            "lat": -33.86882,
+            "long": 151.209296
+        },
+        "cloud": "Public",
+        "analyticsAndEndpointManagement": "Yes",
+        "endpointManagementLocation": "No",
+        "accessLocation": "No",
+        "availability": "Advanced or Comprehensive Subscription"
+    },
+    {
+        "name": "Taipei - Taiwan (TPE-G2)",
+        "location": {
+            "lat": 25.0330,
+            "long": 121.5654
+        },
+        "cloud": "Public",
+        "analyticsAndEndpointManagement": "Yes",
+        "endpointManagementLocation": "No",
+        "accessLocation": "No",
+        "availability": "Advanced or Comprehensive Subscription"
+    },
+    {
+        "name": "Tel Aviv - Israel (TLV-G2)",
+        "location": {
+            "lat": 32.0853,
+            "long": 34.7818
+        },
+        "cloud": "Public",
+        "analyticsAndEndpointManagement": "Yes",
+        "endpointManagementLocation": "No",
+        "accessLocation": "No",
+        "availability": "Advanced or Comprehensive Subscription"
+    },
+    {
+        "name": "Warsaw - Poland (WAW-G2)",
+        "location": {
+            "lat": 52.2297,
+            "long": 21.0122
+        },
+        "cloud": "Public",
+        "analyticsAndEndpointManagement": "Yes",
+        "endpointManagementLocation": "No",
+        "accessLocation": "No",
+        "availability": "Advanced or Comprehensive Subscription"
+    },
+    {
+        "name": "Zürich - Switzerland (ZRH-G2)",
+        "location": {
+            "lat": 47.3769,
+            "long": 8.5417
+        },
+        "cloud": "Public",
+        "analyticsAndEndpointManagement": "Yes",
+        "endpointManagementLocation": "No",
+        "accessLocation": "No",
+        "availability": "Advanced or Comprehensive Subscription"
+    },
+    {
+        "name": "Athens - Greece (ATH-E1)",
+        "location": {
+            "lat": 37.9838,
+            "long": 23.7275
+        },
+        "cloud": "Public",
+        "analyticsAndEndpointManagement": "No",
+        "endpointManagementLocation": "No",
+        "accessLocation": "Yes",
+        "availability": "Comprehensive Subscription"
+    },
+    {
+        "name": "Atlanta - Georgia - USA (ATL-E1)",
+        "location": {
+            "lat": 33.7490,
+            "long": -84.3880
+        },
+        "cloud": "Public",
+        "analyticsAndEndpointManagement": "No",
+        "endpointManagementLocation": "No",
+        "accessLocation": "Yes",
+        "availability": "Comprehensive Subscription"
+    },
+    {
+        "name": "Auckland - New Zealand (AKL-E1)",
+        "location": {
+            "lat": -36.8485,
+            "long": 174.7633
+        },
+        "cloud": "Public",
+        "analyticsAndEndpointManagement": "No",
+        "endpointManagementLocation": "No",
+        "accessLocation": "Yes",
+        "availability": "Comprehensive Subscription"
+    },
+    {
+        "name": "Aurora - Illinois - USA (ORD-E1)",
+        "location": {
+            "lat": 41.7606,
+            "long": -88.3201
+        },
+        "cloud": "Public",
+        "analyticsAndEndpointManagement": "No",
+        "endpointManagementLocation": "No",
+        "accessLocation": "Yes",
+        "availability": "Comprehensive Subscription"
+    },
+    {
+        "name": "Austin - Texas - USA (AUS-E1)",
+        "location": {
+            "lat": 30.2672,
+            "long": -97.7431
+        },
+        "cloud": "Public",
+        "analyticsAndEndpointManagement": "No",
+        "endpointManagementLocation": "No",
+        "accessLocation": "Yes",
+        "availability": "Comprehensive Subscription"
+    },
+    {
+        "name": "Bangkok - Thailand (BKK-E1)",
+        "location": {
+            "lat": 13.7563,
+            "long": 100.5018
+        },
+        "cloud": "Public",
+        "analyticsAndEndpointManagement": "No",
+        "endpointManagementLocation": "No",
+        "accessLocation": "Yes",
+        "availability": "Comprehensive Subscription"
+    },
+    {
+        "name": "Barcelona - Spain (BCN-E1)",
+        "location": {
+            "lat": 41.3851,
+            "long": 2.1734
+        },
+        "cloud": "Public",
+        "analyticsAndEndpointManagement": "No",
+        "endpointManagementLocation": "No",
+        "accessLocation": "Yes",
+        "availability": "Comprehensive Subscription"
+    },
+    {
+        "name": "Berlin - Germany (BER-E1)",
+        "location": {
+            "lat": 52.5200,
+            "long": 13.4050
+        },
+        "cloud": "Public",
+        "analyticsAndEndpointManagement": "No",
+        "endpointManagementLocation": "No",
+        "accessLocation": "Yes",
+        "availability": "Comprehensive Subscription"
+    },
+    {
+        "name": "Bogotá - Colombia (BOG-E1)",
+        "location": {
+            "lat": 4.7110,
+            "long": -74.0721
+        },
+        "cloud": "Public",
+        "analyticsAndEndpointManagement": "No",
+        "endpointManagementLocation": "No",
+        "accessLocation": "Yes",
+        "availability": "Comprehensive Subscription"
+    },
+    {
+        "name": "Boston - Massachusetts - USA (BOS-E1)",
+        "location": {
+            "lat": 42.3601,
+            "long": -71.0589
+        },
+        "cloud": "Public",
+        "analyticsAndEndpointManagement": "No",
+        "endpointManagementLocation": "No",
+        "accessLocation": "Yes",
+        "availability": "Comprehensive Subscription"
+    },
+    {
+        "name": "Brisbane - Australia (BNE-E1)",
+        "location": {
+            "lat": -27.4698,
+            "long": 153.0251
+        },
+        "cloud": "Public",
+        "analyticsAndEndpointManagement": "No",
+        "endpointManagementLocation": "No",
+        "accessLocation": "Yes",
+        "availability": "Comprehensive Subscription"
+    },
+    {
+        "name": "Brussels - Belgium (BRU-E1)",
+        "location": {
+            "lat": 50.8503,
+            "long": 4.3517
+        },
+        "cloud": "Public",
+        "analyticsAndEndpointManagement": "No",
+        "endpointManagementLocation": "No",
+        "accessLocation": "Yes",
+        "availability": "Comprehensive Subscription"
+    },
+    {
+        "name": "Bucharest - Romania (OTP-E1)",
+        "location": {
+            "lat": 44.4268,
+            "long": 26.1025
+        },
+        "cloud": "Public",
+        "analyticsAndEndpointManagement": "No",
+        "endpointManagementLocation": "No",
+        "accessLocation": "Yes",
+        "availability": "Comprehensive Subscription"
+    },
+    {
+        "name": "Budapest - Hungary (BUD-E1)",
+        "location": {
+            "lat": 47.4979,
+            "long": 19.0402
+        },
+        "cloud": "Public",
+        "analyticsAndEndpointManagement": "No",
+        "endpointManagementLocation": "No",
+        "accessLocation": "Yes",
+        "availability": "Comprehensive Subscription"
+    },
+    {
+        "name": "Buenos Aires - Argentina (EZE-E1)",
+        "location": {
+            "lat": -34.6037,
+            "long": -58.3816
+        },
+        "cloud": "Public",
+        "analyticsAndEndpointManagement": "No",
+        "endpointManagementLocation": "No",
+        "accessLocation": "Yes",
+        "availability": "Comprehensive Subscription"
+    },
+    {
+        "name": "Busan - South Korea (PUS-E1)",
+        "location": {
+            "lat": 35.1796,
+            "long": 129.0756
+        },
+        "cloud": "Public",
+        "analyticsAndEndpointManagement": "No",
+        "endpointManagementLocation": "No",
+        "accessLocation": "Yes",
+        "availability": "Comprehensive Subscription"
+    },
+    {
+        "name": "Calgary - Canada (YYC-E1)",
+        "location": {
+            "lat": 51.0447,
+            "long": -114.0719
+        },
+        "cloud": "Public",
+        "analyticsAndEndpointManagement": "No",
+        "endpointManagementLocation": "No",
+        "accessLocation": "Yes",
+        "availability": "Comprehensive Subscription"
+    },
+    {
+        "name": "Canberra - Australia (CBR-E1)",
+        "location": {
+            "lat": -35.2809,
+            "long": 149.1300
+        },
+        "cloud": "Public",
+        "analyticsAndEndpointManagement": "No",
+        "endpointManagementLocation": "No",
+        "accessLocation": "Yes",
+        "availability": "Comprehensive Subscription"
+    },
+    {
+        "name": "Chennai - India (MAA-E1)",
+        "location": {
+            "lat": 13.0827,
+            "long": 80.2707
+        },
+        "cloud": "Public",
+        "analyticsAndEndpointManagement": "No",
+        "endpointManagementLocation": "No",
+        "accessLocation": "Yes",
+        "availability": "Comprehensive Subscription"
+    },
+    {
+        "name": "Chicago - Illinois – USA (CHI-E1)",
+        "location": {
+            "lat": 41.8781,
+            "long": -87.6298
+        },
+        "cloud": "Public",
+        "analyticsAndEndpointManagement": "No",
+        "endpointManagementLocation": "No",
+        "accessLocation": "Yes",
+        "availability": "Comprehensive Subscription"
+    },
+    {
+        "name": "Columbus - Ohio - USA (CMH-E1)",
+        "location": {
+            "lat": 39.9612,
+            "long": -82.9988
+        },
+        "cloud": "Public",
+        "analyticsAndEndpointManagement": "No",
+        "endpointManagementLocation": "No",
+        "accessLocation": "Yes",
+        "availability": "Comprehensive Subscription"
+    },
+    {
+        "name": "Copenhagen - Denmark (CPH-E1)",
+        "location": {
+            "lat": 55.6761,
+            "long": 12.5683
+        },
+        "cloud": "Public",
+        "analyticsAndEndpointManagement": "No",
+        "endpointManagementLocation": "No",
+        "accessLocation": "Yes",
+        "availability": "Comprehensive Subscription"
+    },
+    {
+        "name": "Council Bluffs - Iowa - USA (OMA-E1)",
+        "location": {
+            "lat": 41.2619,
+            "long": -95.8608
+        },
+        "cloud": "Public",
+        "analyticsAndEndpointManagement": "No",
+        "endpointManagementLocation": "No",
+        "accessLocation": "Yes",
+        "availability": "Comprehensive Subscription"
+    },
+    {
+        "name": "Dallas - Texas - USA (DFW-E1)",
+        "location": {
+            "lat": 32.7767,
+            "long": -96.7970
+        },
+        "cloud": "Public",
+        "analyticsAndEndpointManagement": "No",
+        "endpointManagementLocation": "No",
+        "accessLocation": "Yes",
+        "availability": "Comprehensive Subscription"
+    },
+    {
+        "name": "Delhi - India (DEL-E1)",
+        "location": {
+            "lat": 28.7041,
+            "long": 77.1025
+        },
+        "cloud": "Public",
+        "analyticsAndEndpointManagement": "No",
+        "endpointManagementLocation": "No",
+        "accessLocation": "Yes",
+        "availability": "Comprehensive Subscription"
+    },
+    {
+        "name": "Denver - Colorado - USA (DEN-E1)",
+        "location": {
+            "lat": 39.7392,
+            "long": -104.9903
+        },
+        "cloud": "Public",
+        "analyticsAndEndpointManagement": "No",
+        "endpointManagementLocation": "No",
+        "accessLocation": "Yes",
+        "availability": "Comprehensive Subscription"
+    },
+    {
+        "name": "Dubai - United Arab Emirates (DXB-E1)",
+        "location": {
+            "lat": 25.276987,
+            "long": 55.296249
+        },
+        "cloud": "Public",
+        "analyticsAndEndpointManagement": "No",
+        "endpointManagementLocation": "No",
+        "accessLocation": "Yes",
+        "availability": "Comprehensive Subscription"
+    },
+    {
+        "name": "Dublin - Ireland (DUB-E1)",
+        "location": {
+            "lat": 53.3498,
+            "long": -6.2603
+        },
+        "cloud": "Public",
+        "analyticsAndEndpointManagement": "No",
+        "endpointManagementLocation": "No",
+        "accessLocation": "Yes",
+        "availability": "Comprehensive Subscription"
+    },
+    {
+        "name": "Düsseldorf - Germany (DUS-E1)",
+        "location": {
+            "lat": 51.2277,
+            "long": 6.7735
+        },
+        "cloud": "Public",
+        "analyticsAndEndpointManagement": "No",
+        "endpointManagementLocation": "No",
+        "accessLocation": "Yes",
+        "availability": "Comprehensive Subscription"
+    },
+    {
+        "name": "Frankfurt - Germany (FRA-E1)",
+        "location": {
+            "lat": 50.1109,
+            "long": 8.6821
+        },
+        "cloud": "Public",
+        "analyticsAndEndpointManagement": "No",
+        "endpointManagementLocation": "No",
+        "accessLocation": "Yes",
+        "availability": "Comprehensive Subscription"
+    },
+    {
+        "name": "Fujairah - United Arab Emirates (FJR-E1)",
+        "location": {
+            "lat": 25.128809,
+            "long": 56.326485
+        },
+        "cloud": "Public",
+        "analyticsAndEndpointManagement": "No",
+        "endpointManagementLocation": "No",
+        "accessLocation": "Yes",
+        "availability": "Comprehensive Subscription"
+    },
+    {
+        "name": "Geneva - Switzerland (GVA-E1)",
+        "location": {
+            "lat": 46.204391,
+            "long": 6.143158
+        },
+        "cloud": "Public",
+        "analyticsAndEndpointManagement": "No",
+        "endpointManagementLocation": "No",
+        "accessLocation": "Yes",
+        "availability": "Comprehensive Subscription"
+    },
+    {
+        "name": "Hamburg - Germany (HAM-E1)",
+        "location": {
+            "lat": 53.551086,
+            "long": 9.993682
+        },
+        "cloud": "Public",
+        "analyticsAndEndpointManagement": "No",
+        "endpointManagementLocation": "No",
+        "accessLocation": "Yes",
+        "availability": "Comprehensive Subscription"
+    },
+    {
+        "name": "Houston - Texas - USA (IAH-E1)",
+        "location": {
+            "lat": 29.760427,
+            "long": -95.369804
+        },
+        "cloud": "Public",
+        "analyticsAndEndpointManagement": "No",
+        "endpointManagementLocation": "No",
+        "accessLocation": "Yes",
+        "availability": "Comprehensive Subscription"
+    },
+    {
+        "name": "Hsinchu - Taiwan (TPE-E1)",
+        "location": {
+            "lat": 24.813829,
+            "long": 120.967476
+        },
+        "cloud": "Public",
+        "analyticsAndEndpointManagement": "No",
+        "endpointManagementLocation": "No",
+        "accessLocation": "Yes",
+        "availability": "Comprehensive Subscription"
+    },
+    {
+        "name": "Hyderabad - India (HYD-E1)",
+        "location": {
+            "lat": 17.385044,
+            "long": 78.486671
+        },
+        "cloud": "Public",
+        "analyticsAndEndpointManagement": "No",
+        "endpointManagementLocation": "No",
+        "accessLocation": "Yes",
+        "availability": "Comprehensive Subscription"
+    },
+    {
+        "name": "Kansas City - Missouri - USA (MCI-E1)",
+        "location": {
+            "lat": 39.099727,
+            "long": -94.578567
+        },
+        "cloud": "Public",
+        "analyticsAndEndpointManagement": "No",
+        "endpointManagementLocation": "No",
+        "accessLocation": "Yes",
+        "availability": "Comprehensive Subscription"
+    },
+    {
+        "name": "Kolkata - India (CCU-E1)",
+        "location": {
+            "lat": 22.572645,
+            "long": 88.363892
+        },
+        "cloud": "Public",
+        "analyticsAndEndpointManagement": "No",
+        "endpointManagementLocation": "No",
+        "accessLocation": "Yes",
+        "availability": "Comprehensive Subscription"
+    },
+    {
+        "name": "Kuala Lumpur - Malaysia (KUL-E1)",
+        "location": {
+            "lat": 3.139003,
+            "long": 101.686855
+        },
+        "cloud": "Public",
+        "analyticsAndEndpointManagement": "No",
+        "endpointManagementLocation": "No",
+        "accessLocation": "Yes",
+        "availability": "Comprehensive Subscription"
+    },
+    {
+        "name": "Kyiv - Ukraine (KBP-E1)",
+        "location": {
+            "lat": 50.4501,
+            "long": 30.5234
+        },
+        "cloud": "Public",
+        "analyticsAndEndpointManagement": "No",
+        "endpointManagementLocation": "No",
+        "accessLocation": "Yes",
+        "availability": "Comprehensive Subscription"
+    },
+    {
+        "name": "Lagos - Nigeria (LOS-E1)",
+        "location": {
+            "lat": 6.524379,
+            "long": 3.379206
+        },
+        "cloud": "Public",
+        "analyticsAndEndpointManagement": "No",
+        "endpointManagementLocation": "No",
+        "accessLocation": "Yes",
+        "availability": "Comprehensive Subscription"
+    },
+    {
+        "name": "Lisbon - Portugal (LIS-E1)",
+        "location": {
+            "lat": 38.722252,
+            "long": -9.139337
+        },
+        "cloud": "Public",
+        "analyticsAndEndpointManagement": "No",
+        "endpointManagementLocation": "No",
+        "accessLocation": "Yes",
+        "availability": "Comprehensive Subscription"
+    },
+    {
+        "name": "London - United Kingdom (LON-E1)",
+        "location": {
+            "lat": 51.507351,
+            "long": -0.127758
+        },
+        "cloud": "Public",
+        "analyticsAndEndpointManagement": "No",
+        "endpointManagementLocation": "No",
+        "accessLocation": "Yes",
+        "availability": "Comprehensive Subscription"
+    },
+    {
+        "name": "Los Angeles - California - USA (LAX-E1)",
+        "location": {
+            "lat": 34.052235,
+            "long": -118.243683
+        },
+        "cloud": "Public",
+        "analyticsAndEndpointManagement": "No",
+        "endpointManagementLocation": "No",
+        "accessLocation": "Yes",
+        "availability": "Comprehensive Subscription"
+    },
+    {
+        "name": "Manchester - United Kingdom (MAN-E1)",
+        "location": {
+            "lat": 53.480759,
+            "long": -2.242631
+        },
+        "cloud": "Public",
+        "analyticsAndEndpointManagement": "No",
+        "endpointManagementLocation": "No",
+        "accessLocation": "Yes",
+        "availability": "Comprehensive Subscription"
+    },
+    {
+        "name": "Manila - Philippines (MNL-E1)",
+        "location": {
+            "lat": 14.599512,
+            "long": 120.984222
+        },
+        "cloud": "Public",
+        "analyticsAndEndpointManagement": "No",
+        "endpointManagementLocation": "No",
+        "accessLocation": "Yes",
+        "availability": "Comprehensive Subscription"
+    },
+    {
+        "name": "Marseille - France (MRS-E1)",
+        "location": {
+            "lat": 43.296482,
+            "long": 5.36978
+        },
+        "cloud": "Public",
+        "analyticsAndEndpointManagement": "No",
+        "endpointManagementLocation": "No",
+        "accessLocation": "Yes",
+        "availability": "Comprehensive Subscription"
+    },
+    {
+        "name": "Miami - Florida - USA (MIA-E1)",
+        "location": {
+            "lat": 25.761681,
+            "long": -80.191788
+        },
+        "cloud": "Public",
+        "analyticsAndEndpointManagement": "No",
+        "endpointManagementLocation": "No",
+        "accessLocation": "Yes",
+        "availability": "Comprehensive Subscription"
+    },
+    {
+        "name": "Minneapolis - Minnesota - USA (MSP-E1)",
+        "location": {
+            "lat": 44.977753,
+            "long": -93.265011
+        },
+        "cloud": "Public",
+        "analyticsAndEndpointManagement": "No",
+        "endpointManagementLocation": "No",
+        "accessLocation": "Yes",
+        "availability": "Comprehensive Subscription"
+    },
+    {
+        "name": "Mombasa - Kenya (MBA-E1)",
+        "location": {
+            "lat": -4.043477,
+            "long": 39.668206
+        },
+        "cloud": "Public",
+        "analyticsAndEndpointManagement": "No",
+        "endpointManagementLocation": "No",
+        "accessLocation": "Yes",
+        "availability": "Comprehensive Subscription"
+    },
+    {
+        "name": "Montreal - Canada (YMQ-E1)",
+        "location": {
+            "lat": 45.501689,
+            "long": -73.567256
+        },
+        "cloud": "Public",
+        "analyticsAndEndpointManagement": "No",
+        "endpointManagementLocation": "No",
+        "accessLocation": "Yes",
+        "availability": "Comprehensive Subscription"
+    },
+    {
+        "name": "Mumbai - India (BOM-E1)",
+        "location": {
+            "lat": 19.07609,
+            "long": 72.877426
+        },
+        "cloud": "Public",
+        "analyticsAndEndpointManagement": "No",
+        "endpointManagementLocation": "No",
+        "accessLocation": "Yes",
+        "availability": "Comprehensive Subscription"
+    },
+    {
+        "name": "Munich - Germany (MUC-E1)",
+        "location": {
+            "lat": 48.135124,
+            "long": 11.581981
+        },
+        "cloud": "Public",
+        "analyticsAndEndpointManagement": "No",
+        "endpointManagementLocation": "No",
+        "accessLocation": "Yes",
+        "availability": "Comprehensive Subscription"
+    },
+    {
+        "name": "Muscat - Oman (MCT-E1)",
+        "location": {
+            "lat": 23.5880,
+            "long": 58.3829
+        },
+        "cloud": "Public",
+        "analyticsAndEndpointManagement": "No",
+        "endpointManagementLocation": "No",
+        "accessLocation": "Yes",
+        "availability": "Comprehensive Subscription"
+    },
+    {
+        "name": "New York - New York - USA (JFK-E1)",
+        "location": {
+            "lat": 40.712776,
+            "long": -74.005974
+        },
+        "cloud": "Public",
+        "analyticsAndEndpointManagement": "No",
+        "endpointManagementLocation": "No",
+        "accessLocation": "Yes",
+        "availability": "Comprehensive Subscription"
+    },
+    {
+        "name": "Oslo - Norway (OSL-E1)",
+        "location": {
+            "lat": 59.913868,
+            "long": 10.752245
+        },
+        "cloud": "Public",
+        "analyticsAndEndpointManagement": "No",
+        "endpointManagementLocation": "No",
+        "accessLocation": "Yes",
+        "availability": "Comprehensive Subscription"
+    },
+    {
+        "name": "Palo Alto - California - USA (SFO-E1)",
+        "location": {
+            "lat": 37.441883,
+            "long": -122.143019
+        },
+        "cloud": "Public",
+        "analyticsAndEndpointManagement": "No",
+        "endpointManagementLocation": "No",
+        "accessLocation": "Yes",
+        "availability": "Comprehensive Subscription"
+    },
+    {
+        "name": "Paris - France (PAR-E1)",
+        "location": {
+            "lat": 48.856613,
+            "long": 2.352222
+        },
+        "cloud": "Public",
+        "analyticsAndEndpointManagement": "No",
+        "endpointManagementLocation": "No",
+        "accessLocation": "Yes",
+        "availability": "Comprehensive Subscription"
+    },
+    {
+        "name": "Perth - Australia (PER-E1)",
+        "location": {
+            "lat": -31.950527,
+            "long": 115.860457
+        },
+        "cloud": "Public",
+        "analyticsAndEndpointManagement": "No",
+        "endpointManagementLocation": "No",
+        "accessLocation": "Yes",
+        "availability": "Comprehensive Subscription"
+    },
+    {
+        "name": "Philadelphia - Pennsylvania - USA (PHL-E1)",
+        "location": {
+            "lat": 39.952583,
+            "long": -75.165222
+        },
+        "cloud": "Public",
+        "analyticsAndEndpointManagement": "No",
+        "endpointManagementLocation": "No",
+        "accessLocation": "Yes",
+        "availability": "Comprehensive Subscription"
+    },
+    {
+        "name": "Phoenix - Arizona - USA (PHX-E1)",
+        "location": {
+            "lat": 33.448376,
+            "long": -112.074036
+        },
+        "cloud": "Public",
+        "analyticsAndEndpointManagement": "No",
+        "endpointManagementLocation": "No",
+        "accessLocation": "Yes",
+        "availability": "Comprehensive Subscription"
+    },
+    {
+        "name": "Prague - Czechia (PRG-E1)",
+        "location": {
+            "lat": 50.075539,
+            "long": 14.4378
+        },
+        "cloud": "Public",
+        "analyticsAndEndpointManagement": "No",
+        "endpointManagementLocation": "No",
+        "accessLocation": "Yes",
+        "availability": "Comprehensive Subscription"
+    },
+    {
+        "name": "Querétaro - Mexico (QRO-G2)",
+        "location": {
+            "lat": 20.588793,
+            "long": -100.389888
+        },
+        "cloud": "Public",
+        "analyticsAndEndpointManagement": "Yes",
+        "endpointManagementLocation": "No",
+        "accessLocation": "No",
+        "availability": "Advanced or Comprehensive Subscription"
+    },
+    {
+        "name": "Rio de Janeiro - Brazil (GIG-E1)",
+        "location": {
+            "lat": -22.906847,
+            "long": -43.172897
+        },
+        "cloud": "Public",
+        "analyticsAndEndpointManagement": "No",
+        "endpointManagementLocation": "No",
+        "accessLocation": "Yes",
+        "availability": "Comprehensive Subscription"
+    },
+    {
+        "name": "Rome - Italy (FCO-E1)",
+        "location": {
+            "lat": 41.902782,
+            "long": 12.496366
+        },
+        "cloud": "Public",
+        "analyticsAndEndpointManagement": "No",
+        "endpointManagementLocation": "No",
+        "accessLocation": "Yes",
+        "availability": "Comprehensive Subscription"
+    },
+    {
+        "name": "Salt Lake City - Utah - USA (SLC-E1)",
+        "location": {
+            "lat": 40.760779,
+            "long": -111.891045
+        },
+        "cloud": "Public",
+        "analyticsAndEndpointManagement": "No",
+        "endpointManagementLocation": "No",
+        "accessLocation": "Yes",
+        "availability": "Comprehensive Subscription"
+    },
+    {
+        "name": "San Antonio - Texas - USA (SAT-E1)",
+        "location": {
+            "lat": 29.424122,
+            "long": -98.493629
+        },
+        "cloud": "Public",
+        "analyticsAndEndpointManagement": "No",
+        "endpointManagementLocation": "No",
+        "accessLocation": "Yes",
+        "availability": "Comprehensive Subscription"
+    },
+    {
+        "name": "San Jose - California - USA (SJC-E1)",
+        "location": {
+            "lat": 37.338208,
+            "long": -121.886329
+        },
+        "cloud": "Public",
+        "analyticsAndEndpointManagement": "No",
+        "endpointManagementLocation": "No",
+        "accessLocation": "Yes",
+        "availability": "Comprehensive Subscription"
+    },
+    {
+        "name": "Santa Clara - California - USA (SJC-E2)",
+        "location": {
+            "lat": 37.354107,
+            "long": -121.955238
+        },
+        "cloud": "Public",
+        "analyticsAndEndpointManagement": "No",
+        "endpointManagementLocation": "No",
+        "accessLocation": "Yes",
+        "availability": "Comprehensive Subscription"
+    },
+    {
+        "name": "Seattle - Washington - USA (SEA-E1)",
+        "location": {
+            "lat": 47.606209,
+            "long": -122.332069
+        },
+        "cloud": "Public",
+        "analyticsAndEndpointManagement": "No",
+        "endpointManagementLocation": "No",
+        "accessLocation": "Yes",
+        "availability": "Comprehensive Subscription"
+    },
+    {
+        "name": "Singapore - Republic of Singapore (SIN-E1)",
+        "location": {
+            "lat": 1.352083,
+            "long": 103.819836
+        },
+        "cloud": "Public",
+        "analyticsAndEndpointManagement": "No",
+        "endpointManagementLocation": "No",
+        "accessLocation": "Yes",
+        "availability": "Comprehensive Subscription"
+    },
+    {
+        "name": "Sofia - Bulgaria (SOF-E1)",
+        "location": {
+            "lat": 42.697708,
+            "long": 23.321868
+        },
+        "cloud": "Public",
+        "analyticsAndEndpointManagement": "No",
+        "endpointManagementLocation": "No",
+        "accessLocation": "Yes",
+        "availability": "Comprehensive Subscription"
+    },
+    {
+        "name": "Stockholm - Sweden (ARN-E1)",
+        "location": {
+            "lat": 59.329323,
+            "long": 18.068581
+        },
+        "cloud": "Public",
+        "analyticsAndEndpointManagement": "No",
+        "endpointManagementLocation": "No",
+        "accessLocation": "Yes",
+        "availability": "Comprehensive Subscription"
+    },
+    {
+        "name": "Sydney - Australia (SYD-E1)",
+        "location": {
+            "lat": -33.86882,
+            "long": 151.209296
+        },
+        "cloud": "Public",
+        "analyticsAndEndpointManagement": "No",
+        "endpointManagementLocation": "No",
+        "accessLocation": "Yes",
+        "availability": "Comprehensive Subscription"
+    },
+    {
+        "name": "Tokyo - Japan (TYO-E1)",
+        "location": {
+            "lat": 35.689487,
+            "long": 139.691711
+        },
+        "cloud": "Public",
+        "analyticsAndEndpointManagement": "No",
+        "endpointManagementLocation": "No",
+        "accessLocation": "Yes",
+        "availability": "Comprehensive Subscription"
+    },
+    {
+        "name": "Toronto - Canada (YTO-E1)",
+        "location": {
+            "lat": 43.65107,
+            "long": -79.347015
+        },
+        "cloud": "Public",
+        "analyticsAndEndpointManagement": "No",
+        "endpointManagementLocation": "No",
+        "accessLocation": "Yes",
+        "availability": "Comprehensive Subscription"
+    },
+    {
+        "name": "Turin - Italy (TRN-E1)",
+        "location": {
+            "lat": 45.070312,
+            "long": 7.686856
+        },
+        "cloud": "Public",
+        "analyticsAndEndpointManagement": "No",
+        "endpointManagementLocation": "No",
+        "accessLocation": "Yes",
+        "availability": "Comprehensive Subscription"
+    },
+    {
+        "name": "Vancouver - Canada (YVR-E1)",
+        "location": {
+            "lat": 49.282729,
+            "long": -123.120738
+        },
+        "cloud": "Public",
+        "analyticsAndEndpointManagement": "No",
+        "endpointManagementLocation": "No",
+        "accessLocation": "Yes",
+        "availability": "Comprehensive Subscription"
+    },
+    {
+        "name": "Vienna - Austria (VIE-E1)",
+        "location": {
+            "lat": 48.208174,
+            "long": 16.373819
+        },
+        "cloud": "Public",
+        "analyticsAndEndpointManagement": "No",
+        "endpointManagementLocation": "No",
+        "accessLocation": "Yes",
+        "availability": "Comprehensive Subscription"
+    },
+    {
+        "name": "Warsaw - Poland (WAW-E1)",
+        "location": {
+            "lat": 52.229676,
+            "long": 21.012229
+        },
+        "cloud": "Public",
+        "analyticsAndEndpointManagement": "No",
+        "endpointManagementLocation": "No",
+        "accessLocation": "Yes",
+        "availability": "Comprehensive Subscription"
+    },
+    {
+        "name": "Zagreb - Croatia (ZAG-E1)",
+        "location": {
+            "lat": 45.815011,
+            "long": 15.981919
+        },
+        "cloud": "Public",
+        "analyticsAndEndpointManagement": "No",
+        "endpointManagementLocation": "No",
+        "accessLocation": "Yes",
+        "availability": "Comprehensive Subscription"
+    },
+    {
+        "name": "Zürich - Switzerland (ZRH-E1)",
+        "location": {
+            "lat": 47.376887,
+            "long": 8.541694
+        },
+        "cloud": "Public",
+        "analyticsAndEndpointManagement": "No",
+        "endpointManagementLocation": "No",
+        "accessLocation": "Yes",
+        "availability": "Comprehensive Subscription"
+    }
+]
