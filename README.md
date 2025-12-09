@@ -1,6 +1,7 @@
 # SASE Map
 
-An interactive web-based map visualization tool for Fortinet's SASE (Secure Access Service Edge) global data center locations, including compute nodes and edge points of presence (PoPs).
+An interactive web-based map visualization tool for Fortinet's SASE (Secure Access Service Edge) global data center locations, including compute nodes and edge points of presence (PoPs).  
+You can access the live version [here](https://musicalbuehne.github.io/FortiSASE-Map/).
 
 ## Overview
 
