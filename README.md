@@ -109,19 +109,6 @@ Locations follow a standardized naming pattern: `<IATA-Code>-<Type>`
    - Click on markers to view location details
    - Use the controls in the top-right corner to filter and customize the view
 
-## File Structure
-
-```
-sasemap/
-├── index.html                  # Main application file
-├── locations.json              # Fortinet SASE location data
-├── customer-example.json       # Sample customer location format
-├── run-local-server.sh         # Script to start local web server
-├── sase-locations.csv          # CSV export of location data
-├── sase-locations-new.csv      # Updated CSV export
-└── README.md                   # This file
-```
-
 ## Customer Data Format
 
 To upload your own customer location data, create a JSON file following this structure:
