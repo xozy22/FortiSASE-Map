@@ -408,10 +408,34 @@
         "availability": "Advanced or Comprehensive Subscription"
     },
     {
+        "name": "Dubai - United Arab Emirates (DXB-A1)",
+        "location": {
+            "lat": 25.276987,
+            "long": 55.296249
+        },
+        "cloud": "Public",
+        "analyticsAndEndpointManagement": "Yes",
+        "endpointManagementLocation": "No",
+        "accessLocation": "No",
+        "availability": "Advanced or Comprehensive Subscription"
+    },
+    {
         "name": "Dublin - Ireland (DUB-A2)",
         "location": {
             "lat": 53.3498,
             "long": -6.2603
+        },
+        "cloud": "Public",
+        "analyticsAndEndpointManagement": "Yes",
+        "endpointManagementLocation": "No",
+        "accessLocation": "No",
+        "availability": "Advanced or Comprehensive Subscription"
+    },
+    {
+        "name": "Frankfurt - Germany (FRA-G2)",
+        "location": {
+            "lat": 50.110924,
+            "long": 8.682127
         },
         "cloud": "Public",
         "analyticsAndEndpointManagement": "Yes",
@@ -660,6 +684,18 @@
         "availability": "Advanced or Comprehensive Subscription"
     },
     {
+        "name": "Singapore - Republic of Singapore (SIN-G2)",
+        "location": {
+            "lat": 1.352083,
+            "long": 103.819836
+        },
+        "cloud": "Public",
+        "analyticsAndEndpointManagement": "Yes",
+        "endpointManagementLocation": "No",
+        "accessLocation": "No",
+        "availability": "Advanced or Comprehensive Subscription"
+    },
+    {
         "name": "St. Ghislain, Belgium (BRU-G2)",
         "location": {
             "lat": 50.4714,
@@ -700,6 +736,18 @@
         "location": {
             "lat": 32.0853,
             "long": 34.7818
+        },
+        "cloud": "Public",
+        "analyticsAndEndpointManagement": "Yes",
+        "endpointManagementLocation": "No",
+        "accessLocation": "No",
+        "availability": "Advanced or Comprehensive Subscription"
+    },
+    {
+        "name": "Toronto - Canada (YTO-G2)",
+        "location": {
+            "lat": 43.65107,
+            "long": -79.347015
         },
         "cloud": "Public",
         "analyticsAndEndpointManagement": "Yes",
@@ -1072,18 +1120,6 @@
         "location": {
             "lat": 51.2277,
             "long": 6.7735
-        },
-        "cloud": "Public",
-        "analyticsAndEndpointManagement": "No",
-        "endpointManagementLocation": "No",
-        "accessLocation": "Yes",
-        "availability": "Comprehensive Subscription"
-    },
-    {
-        "name": "Frankfurt - Germany (FRA-E1)",
-        "location": {
-            "lat": 50.1109,
-            "long": 8.6821
         },
         "cloud": "Public",
         "analyticsAndEndpointManagement": "No",
@@ -1624,18 +1660,6 @@
         "location": {
             "lat": 35.689487,
             "long": 139.691711
-        },
-        "cloud": "Public",
-        "analyticsAndEndpointManagement": "No",
-        "endpointManagementLocation": "No",
-        "accessLocation": "Yes",
-        "availability": "Comprehensive Subscription"
-    },
-    {
-        "name": "Toronto - Canada (YTO-E1)",
-        "location": {
-            "lat": 43.65107,
-            "long": -79.347015
         },
         "cloud": "Public",
         "analyticsAndEndpointManagement": "No",
