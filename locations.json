@@ -852,6 +852,18 @@
         "availability": "Comprehensive Subscription"
     },
     {
+        "name": "Bangkok - Thailand (BKK-A1)",
+        "location": {
+            "lat": 13.7563,
+            "long": 100.5018
+        },
+        "cloud": "Public",
+        "analyticsAndEndpointManagement": "Yes",
+        "endpointManagementLocation": "No",
+        "accessLocation": "No",
+        "availability": "Advanced or Comprehensive Subscription"
+    },
+    {
         "name": "Barcelona - Spain (BCN-E1)",
         "location": {
             "lat": 41.3851,
@@ -1020,16 +1032,16 @@
         "availability": "Comprehensive Subscription"
     },
     {
-        "name": "Columbus - Ohio - USA (CMH-E1)",
+        "name": "Columbus - Ohio - USA (CMH-G2)",
         "location": {
             "lat": 39.9612,
             "long": -82.9988
         },
         "cloud": "Public",
-        "analyticsAndEndpointManagement": "No",
+        "analyticsAndEndpointManagement": "Yes",
         "endpointManagementLocation": "No",
-        "accessLocation": "Yes",
-        "availability": "Comprehensive Subscription"
+        "accessLocation": "No",
+        "availability": "Advanced or Comprehensive Subscription"
     },
     {
         "name": "Copenhagen - Denmark (CPH-E1)",
@@ -1368,16 +1380,28 @@
         "availability": "Comprehensive Subscription"
     },
     {
-        "name": "Montreal - Canada (YMQ-E1)",
+        "name": "Moncks Corner - South Carolina - USA (CHS-G2)",
+        "location": {
+            "lat": 33.1963,
+            "long": -80.1860
+        },
+        "cloud": "Public",
+        "analyticsAndEndpointManagement": "Yes",
+        "endpointManagementLocation": "No",
+        "accessLocation": "No",
+        "availability": "Advanced or Comprehensive Subscription"
+    },
+    {
+        "name": "Montreal - Canada (YMQ-G2)",
         "location": {
             "lat": 45.501689,
             "long": -73.567256
         },
         "cloud": "Public",
-        "analyticsAndEndpointManagement": "No",
+        "analyticsAndEndpointManagement": "Yes",
         "endpointManagementLocation": "No",
-        "accessLocation": "Yes",
-        "availability": "Comprehensive Subscription"
+        "accessLocation": "No",
+        "availability": "Advanced or Comprehensive Subscription"
     },
     {
         "name": "Mumbai - India (BOM-E1)",
@@ -1656,16 +1680,16 @@
         "availability": "Comprehensive Subscription"
     },
     {
-        "name": "Tokyo - Japan (TYO-E1)",
+        "name": "Tokyo - Japan (TYO-G2)",
         "location": {
             "lat": 35.689487,
             "long": 139.691711
         },
         "cloud": "Public",
-        "analyticsAndEndpointManagement": "No",
+        "analyticsAndEndpointManagement": "Yes",
         "endpointManagementLocation": "No",
-        "accessLocation": "Yes",
-        "availability": "Comprehensive Subscription"
+        "accessLocation": "No",
+        "availability": "Advanced or Comprehensive Subscription"
     },
     {
         "name": "Turin - Italy (TRN-E1)",
