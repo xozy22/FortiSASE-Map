@@ -199,6 +199,11 @@ Created by Alexander Uhlmann
                 zoom: zoom
             }));
         });
+
+        // Remove lines between customer location an PoPs
+        map.on('click', function () {
+            customerConnectionLines.clearLayers();
+        }); 
         
         // Add OpenStreetMap base layer
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -237,7 +242,110 @@ Created by Alexander Uhlmann
 
         var locations = [];
         var allLocationData = []; // Store all location data for filtering
+        var customerLocationData = [];
+        var customerConnectionLines = L.layerGroup().addTo(map);
+        var showCustomerLines = true;
 
+        // === ADD: Haversine distance calculation ===
+        function haversineDistance(lat1, lon1, lat2, lon2) {
+            const R = 6371; // km
+            const dLat = (lat2 - lat1) * Math.PI / 180;
+            const dLon = (lon2 - lon1) * Math.PI / 180;
+
+            const a =
+                Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+                Math.cos(lat1 * Math.PI / 180) *
+                Math.cos(lat2 * Math.PI / 180) *
+                Math.sin(dLon / 2) * Math.sin(dLon / 2);
+
+            return R * (2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a)));
+        }
+        // === ADD: Check if PoP matches selected subscription ===
+        function popMatchesSubscription(pop, subscription) {
+            if (!pop.availability) return false;
+            var availability = pop.availability.toLowerCase();
+
+            switch (subscription) {
+                case 'standard':
+                    customerConnectionLines.clearLayers();
+                    return availability.includes('any subscription');
+                case 'advanced':
+                    customerConnectionLines.clearLayers();
+                    return availability.includes('any subscription') ||
+                        availability.includes('advanced');
+                case 'comprehensive':
+                    customerConnectionLines.clearLayers();
+                    return availability.includes('any subscription') ||
+                        availability.includes('advanced') ||
+                        availability.includes('comprehensive');
+                default:
+                    return false;
+            }
+        }
+
+        // === ADD: Find nearest PoPs for a customer ===
+        function findNearestPops(customerPop, subscription, limit) {
+            return allLocationData
+                .filter(function (pop) {
+                    return pop.accessLocation && // exclude customers
+                        pop.location &&
+                        popMatchesSubscription(pop, subscription);
+                })
+                .map(function (pop) {
+                    return {
+                        pop: pop,
+                        distance: haversineDistance(
+                            customerPop.location.lat,
+                            customerPop.location.long,
+                            pop.location.lat,
+                            pop.location.long
+                        )
+                    };
+                })
+                .sort(function (a, b) {
+                    return a.distance - b.distance;
+                })
+                .slice(0, limit || 3);
+        }
+        function drawCustomerToPopLines(customerPop, subscription) {
+
+            // Alte Linien löschen
+            customerConnectionLines.clearLayers();
+
+            if (!customerPop || !customerPop.location) return;
+
+            var nearest = findNearestPops(customerPop, subscription, 3);
+
+            nearest.forEach(function (n, index) {
+
+                var from = [
+                    customerPop.location.lat,
+                    customerPop.location.long
+                ];
+
+                var to = [
+                    n.pop.location.lat,
+                    n.pop.location.long
+                ];
+
+                var latency = (n.distance * 0.0049 * 2).toFixed(2); // RTT ms
+
+                var line = L.polyline([from, to], {
+                    color: '#e74c3c',
+                    weight: 2,
+                    dashArray: '5,6',
+                    opacity: 0.9
+                }).bindTooltip(
+                    `<b>${customerPop.name}</b><br>
+                    to ${n.pop.name}<br>
+                    ${n.distance.toFixed(1)} km<br>
+                    ~${latency} ms RTT`,
+                    { sticky: true }
+                );
+
+                customerConnectionLines.addLayer(line);
+            });
+        }
         // Random offset function to avoid overlapping markers
         function storeOriginalData(data) {
             data.forEach(pop => {
@@ -325,6 +433,7 @@ Created by Alexander Uhlmann
                 <div class="legend-content" id="controls-content">
                     <div class="control-item">
                         <button onclick="recenterMap();">Center map</button>
+                        <button onclick="exportCustomerNearestPopsCSV()">Export Customer to closest PoPs</button>
                     </div>
                     <div class="control-item">
                         <div style="display: flex; gap: 2px;">
@@ -432,12 +541,52 @@ Created by Alexander Uhlmann
                 }
 
                 var marker = L.marker([pop.location.lat, pop.location.long])
-                    .bindPopup(popupContent/*, { closeOnClick: false, autoClose: false }*/)
-                    .on('add', (function (markerType) {
-                        return function () {
-                            this._icon.classList.add(markerType);
-                        };
-                    })(type));
+                .bindPopup(popupContent)
+                .on('add', function () {
+                    if (this._icon) {
+                        this._icon.classList.add(type);
+                    }
+                })
+                .on('click', function () {
+
+                    // 👉 NUR bei Customer-PoPs rechnen
+                    if (type !== 'customer') return;
+
+                    var subscription =
+                        document.getElementById('availabilityFilter').value;
+
+                    var customerPop = this._customerPop;
+                    if (!customerPop) return;
+
+                    var nearest = findNearestPops(customerPop, subscription, 3);
+
+
+                    var nearestHtml = `
+                        <hr>
+                        <div style="font-weight: bold; margin-bottom: 4px;">
+                            Nearest PoPs (${subscription})
+                        </div>
+                        <ul style="margin: 0; padding-left: 18px;">
+                    `;
+
+                    nearest.forEach(function (n) {
+                        nearestHtml += `
+                            <li>
+                                ${n.pop.name}
+                                <span style="color:#666;">
+                                    (${n.distance.toFixed(1)} km)
+                                </span>
+                            </li>
+                        `;
+                    });
+
+                    nearestHtml += '</ul>';
+
+                    this.setPopupContent(this._basePopupContent + nearestHtml);
+
+                    drawCustomerToPopLines(customerPop, subscription);
+                });
+
 
                 // Store the availability data with the marker for filtering
                 marker.availability = pop.availability;
@@ -447,6 +596,8 @@ Created by Alexander Uhlmann
                 if (type === 'customer') {
                     markersCustomer.addLayer(marker);
                     markersAdded.customer = true;
+                    marker._customerPop = pop;
+                    marker._basePopupContent = popupContent;
                 } else if (type === 'compute') {
                     markersCompute.addLayer(marker);
                     markersAdded.compute = true;
@@ -521,6 +672,9 @@ Created by Alexander Uhlmann
 
                             // Store in sessionStorage for this browser session
                             sessionStorage.setItem('customerLocations', JSON.stringify(customerData));
+                            
+                            // Store Data for Export
+                            customerLocationData = customerData;
 
                             // Update tooltip
                             updateCustomerLocationTooltip();
@@ -603,7 +757,8 @@ Created by Alexander Uhlmann
         window.addEventListener('load', function () {
             var checkbox = document.getElementById('checkboxShowCustomer');
             var storedCustomerData = sessionStorage.getItem('customerLocations');
-
+            customerLocationData = customerData;
+            
             if (storedCustomerData) {
                 try {
                     var customerData = JSON.parse(storedCustomerData);
@@ -778,6 +933,73 @@ Created by Alexander Uhlmann
                 toggle.textContent = 'Show';
             }
         }
+
+        function exportCustomerNearestPopsCSV() {
+            var subscription =
+                document.getElementById('availabilityFilter').value;
+
+            var rows = [];
+
+            // Header
+            rows.push([
+                'Customer Name',
+                'Customer Latitude',
+                'Customer Longitude',
+                'Subscription',
+                'Nearest PoP 1',
+                'Distance 1 (km)',
+                'Nearest PoP 2',
+                'Distance 2 (km)',
+                'Nearest PoP 3',
+                'Distance 3 (km)'
+            ]);
+
+            // Only Customer-PoPs
+            customerLocationData.forEach(function (customer) {
+                if (!customer.location) return;
+                var nearest = findNearestPops(customer, subscription, 3);
+                rows.push([
+                    customer.name,
+                    customer.location.lat,
+                    customer.location.long,
+                    subscription,
+
+                    nearest[0] ? nearest[0].pop.name : '',
+                    nearest[0] ? nearest[0].distance.toFixed(1) : '',
+
+                    nearest[1] ? nearest[1].pop.name : '',
+                    nearest[1] ? nearest[1].distance.toFixed(1) : '',
+
+                    nearest[2] ? nearest[2].pop.name : '',
+                    nearest[2] ? nearest[2].distance.toFixed(1) : ''
+                ]);
+            });
+
+            // Build CSV
+            var csvContent = rows
+                .map(function (row) {
+                    return row
+                        .map(function (cell) {
+                            return `"${String(cell).replace(/"/g, '""')}"`;
+                        })
+                        .join(';');
+                })
+                .join('\n');
+
+            // Trigger Download
+            var blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+            var url = URL.createObjectURL(blob);
+
+            var a = document.createElement('a');
+            a.href = url;
+            a.download = 'customer_nearest_pops_' + subscription + '.csv';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+
+            URL.revokeObjectURL(url);
+        }
+
     </script>
 </body>
 
