@@ -246,7 +246,7 @@ Created by Alexander Uhlmann
         var customerConnectionLines = L.layerGroup().addTo(map);
         var showCustomerLines = true;
 
-        // === ADD: Haversine distance calculation ===
+        // Haversine distance calculation
         function haversineDistance(lat1, lon1, lat2, lon2) {
             const R = 6371; // km
             const dLat = (lat2 - lat1) * Math.PI / 180;
@@ -260,7 +260,7 @@ Created by Alexander Uhlmann
 
             return R * (2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a)));
         }
-        // === ADD: Check if PoP matches selected subscription ===
+        // Check if PoP matches selected subscription
         function popMatchesSubscription(pop, subscription) {
             if (!pop.availability) return false;
             var availability = pop.availability.toLowerCase();
@@ -283,7 +283,7 @@ Created by Alexander Uhlmann
             }
         }
 
-        // === ADD: Find nearest PoPs for a customer ===
+        // Find nearest PoPs for a customer 
         function findNearestPops(customerPop, subscription, limit) {
             return allLocationData
                 .filter(function (pop) {
@@ -309,7 +309,7 @@ Created by Alexander Uhlmann
         }
         function drawCustomerToPopLines(customerPop, subscription) {
 
-            // Alte Linien löschen
+            // Delete old lines
             customerConnectionLines.clearLayers();
 
             if (!customerPop || !customerPop.location) return;
@@ -348,7 +348,7 @@ Created by Alexander Uhlmann
         }
         // Random offset function to avoid overlapping markers
         function storeOriginalData(data) {
-            data.forEach(pop => {
+            data.forEach(function (pop) {
                 // Validate that location data exists and has valid coordinates
                 if (!pop.location ||
                     typeof pop.location.lat === 'undefined' ||
@@ -356,20 +356,23 @@ Created by Alexander Uhlmann
                     console.warn(`Skipping ${pop.name || 'unnamed location'}: Missing location data`);
                     return;
                 }
-
                 // Parse coordinates to ensure they are numbers
                 var lat = parseFloat(pop.location.lat);
                 var long = parseFloat(pop.location.long);
 
                 // Validate that coordinates are valid numbers
                 if (isNaN(lat) || isNaN(long)) {
-                    console.warn(`Skipping ${pop.name || 'unnamed location'}: Invalid coordinates (${pop.location.lat}, ${pop.location.long})`);
+                    console.warn(`Skipping ${pop.name || 'unnamed location'}: Invalid coordinates`);
                     return;
                 }
-
-                // Add random offset and update the pop object
-                pop.location.lat = (lat + Math.random() * 0.2 - 0.1).toFixed(3);
-                pop.location.long = (long + Math.random() * 0.2 - 0.1).toFixed(3);
+                // Add random offset and update the pop object 
+                // pop.location.lat = (lat + Math.random() * 0.2 - 0.1).toFixed(3); 
+                // pop.location.long = (long + Math.random() * 0.2 - 0.1).toFixed(3);
+                pop._displayLocation = {
+                    lat: (lat + Math.random() * 0.2 - 0.1).toFixed(3),
+                    long: (long + Math.random() * 0.2 - 0.1).toFixed(3)
+                };
+                
             });
             allLocationData = data;
         }
@@ -433,7 +436,6 @@ Created by Alexander Uhlmann
                 <div class="legend-content" id="controls-content">
                     <div class="control-item">
                         <button onclick="recenterMap();">Center map</button>
-                        <button onclick="exportCustomerNearestPopsCSV()">Export Customer to closest PoPs</button>
                     </div>
                     <div class="control-item">
                         <div style="display: flex; gap: 2px;">
@@ -441,6 +443,9 @@ Created by Alexander Uhlmann
                             <button onclick="window.open('customer-example.json', '_blank');" title="View sample customer data format" style="width: 30px;">i</button>
                             <button onclick="clearCustomerData();" title="Clear" style="width: 30px;">X</button>
                         </div>
+                    </div>
+                    <div class="control-item">
+                        <button id="btnExportCSV" onclick="exportCustomerNearestPopsCSV()" disabled>Export CSV - Distance to PoPs</button>
                     </div>
                     <div class="control-item">
                         <label for="availabilityFilter" style="display: block; margin-bottom: 2px;">Filter by Subscription:</label>
@@ -539,53 +544,57 @@ Created by Alexander Uhlmann
                 if (pop.availability) {
                     popupContent += `<b>Availability:</b> ${pop.availability}<br>`;
                 }
+                var marker = L.marker([
+                    pop._displayLocation?.lat ?? pop.location.lat,
+                    pop._displayLocation?.long ?? pop.location.long
+                ])
+                .bindPopup(popupContent/*, { closeOnClick: false, autoClose: false }*/)
+                .on('add', (function (markerType) {
+                    return function () {
+                        if (this._icon) {
+                            this._icon.classList.add(markerType);
+                        }
+                    };
+                })(type))
+                .on('click', (function (markerType, customerPop, basePopupContent) {
+                    return function () {
 
-                var marker = L.marker([pop.location.lat, pop.location.long])
-                .bindPopup(popupContent)
-                .on('add', function () {
-                    if (this._icon) {
-                        this._icon.classList.add(type);
-                    }
-                })
-                .on('click', function () {
+                        // Calculate only when customer Pop
+                        if (markerType !== 'customer') return;
 
-                    // 👉 NUR bei Customer-PoPs rechnen
-                    if (type !== 'customer') return;
+                        var subscription =
+                            document.getElementById('availabilityFilter').value;
 
-                    var subscription =
-                        document.getElementById('availabilityFilter').value;
+                        if (!customerPop) return;
 
-                    var customerPop = this._customerPop;
-                    if (!customerPop) return;
+                        var nearest = findNearestPops(customerPop, subscription, 3);
 
-                    var nearest = findNearestPops(customerPop, subscription, 3);
-
-
-                    var nearestHtml = `
-                        <hr>
-                        <div style="font-weight: bold; margin-bottom: 4px;">
-                            Nearest PoPs (${subscription})
-                        </div>
-                        <ul style="margin: 0; padding-left: 18px;">
-                    `;
-
-                    nearest.forEach(function (n) {
-                        nearestHtml += `
-                            <li>
-                                ${n.pop.name}
-                                <span style="color:#666;">
-                                    (${n.distance.toFixed(1)} km)
-                                </span>
-                            </li>
+                        var nearestHtml = `
+                            <hr>
+                            <div style="font-weight: bold; margin-bottom: 4px;">
+                                Nearest PoPs (${subscription})
+                            </div>
+                            <ul style="margin: 0; padding-left: 18px;">
                         `;
-                    });
 
-                    nearestHtml += '</ul>';
+                        nearest.forEach(function (n) {
+                            nearestHtml += `
+                                <li>
+                                    ${n.pop.name}
+                                    <span style="color:#666;">
+                                        (${n.distance.toFixed(1)} km)
+                                    </span>
+                                </li>
+                            `;
+                        });
 
-                    this.setPopupContent(this._basePopupContent + nearestHtml);
+                        nearestHtml += '</ul>';
 
-                    drawCustomerToPopLines(customerPop, subscription);
-                });
+                        this.setPopupContent(basePopupContent + nearestHtml);
+
+                        drawCustomerToPopLines(customerPop, subscription);
+                    };
+                })(type, pop, popupContent));
 
 
                 // Store the availability data with the marker for filtering
@@ -650,6 +659,20 @@ Created by Alexander Uhlmann
             }
         }
 
+        // Update Export Button
+        function updateCSVExportButton() {
+            var btn = document.getElementById('btnExportCSV');
+            if (!btn) return;
+
+            if (customerLocationData && customerLocationData.length > 0) {
+                btn.disabled = false;
+                btn.title = 'Export customer distances to CSV';
+            } else {
+                btn.disabled = true;
+                btn.title = 'Upload customer data to enable export';
+            }
+        }
+
         function uploadCustomerFile() {
             var input = document.createElement('input');
             input.type = 'file';
@@ -675,6 +698,9 @@ Created by Alexander Uhlmann
                             
                             // Store Data for Export
                             customerLocationData = customerData;
+
+                            // Update Export Button
+                            updateCSVExportButton();
 
                             // Update tooltip
                             updateCustomerLocationTooltip();
@@ -702,6 +728,10 @@ Created by Alexander Uhlmann
 
             // Remove from sessionStorage
             sessionStorage.removeItem('customerLocations');
+
+            // Update CSV Export Button
+            customerLocationData = [];
+            updateCSVExportButton();
 
             // Update tooltip
             updateCustomerLocationTooltip();
@@ -934,6 +964,7 @@ Created by Alexander Uhlmann
             }
         }
 
+        // CSV Export
         function exportCustomerNearestPopsCSV() {
             var subscription =
                 document.getElementById('availabilityFilter').value;
