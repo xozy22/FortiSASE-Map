@@ -283,13 +283,33 @@ Created by Alexander Uhlmann
             }
         }
 
+        function popIsVisibleForCalculation(pop) {
+            // Determine PoP type
+            var type = pop.accessLocation &&
+                pop.accessLocation.toLowerCase().includes('no')
+                    ? 'compute'
+                    : 'edge';
+
+            // Respect UI checkboxes
+            if (type === 'edge' && !document.getElementById('checkboxShowEdge').checked) {
+                return false;
+            }
+
+            if (type === 'compute' && !document.getElementById('checkboxShowCompute').checked) {
+                return false;
+            }
+
+            return true;
+        }
+
         // Find nearest PoPs for a customer 
         function findNearestPops(customerPop, subscription, limit) {
             return allLocationData
                 .filter(function (pop) {
-                    return pop.accessLocation && // exclude customers
+                    return pop.accessLocation &&
                         pop.location &&
-                        popMatchesSubscription(pop, subscription);
+                        popMatchesSubscription(pop, subscription) &&
+                        popIsVisibleForCalculation(pop);
                 })
                 .map(function (pop) {
                     return {
@@ -798,6 +818,7 @@ Created by Alexander Uhlmann
                         throw new Error('Customer data must be an array');
                     }
 
+                    customerLocationData = customerData;
                     addMarkers(customerData, 'customer');
                     checkbox.disabled = false;
                     checkbox.checked = true;
@@ -812,10 +833,14 @@ Created by Alexander Uhlmann
             } else {
                 // No customer data in sessionStorage, disable the checkbox
                 checkbox.disabled = true;
+                customerLocationData = [];
             }
 
             // Update tooltip
             updateCustomerLocationTooltip();
+
+            // Update CSV Export Button
+            updateCSVExportButton();
 
             // Apply filter if data is loaded, otherwise it will be applied when data loads
             if (dataLoaded) {
